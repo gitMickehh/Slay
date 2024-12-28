@@ -63,14 +63,12 @@ namespace Slay
 
         private void Awake()
         {
-            //if (File.Exists(AcapellaController.SongPath))
             if (File.Exists(m_SongReference.Value.SongPath))
             {
                 m_AudioSourceInstrumental.clip = m_SongReference.Value.instrumental;
                 m_AudioSourceAcapella.clip = m_SongReference.Value.acapella;
 
                 m_Timeseries = JsonUtility.FromJson<AcapellaTimeseries>(
-                    //File.ReadAllText(AcapellaController.SongPath)
                     File.ReadAllText(m_SongReference.Value.SongPath)
                 );
                 m_MaxMidiNote = int.MinValue;
@@ -137,9 +135,7 @@ namespace Slay
             }
 
             // Move
-            AcapellaTimeseriesPoint microphonePoint = ServiceLocator<MicrophoneController>
-                .Service
-                .CurrentFrame;
+            AcapellaTimeseriesPoint microphonePoint = ServiceLocator<MicrophoneManager>.Service.EstimatePitch();
             float trackEndX = TrackEndX;
             for (int i = m_NoteConveyor.Count - 1; i >= 0; i--)
             {
@@ -155,15 +151,12 @@ namespace Slay
                 note.Rigidbody.position = newPosition;
 
                 // Do we blast?
-                //Debug.Log($"Britney {note.Point.Note} Eric {microphonePoint.Note}");
                 //Debug.Log($"Britney {PitchEstimator.MidiNoteToName(note.Point.Note)}: Microphone {PitchEstimator.MidiNoteToName(microphonePoint.Note)}");
                 if (
                     note.IsAtMidline
                     && !microphonePoint.IsSilence
-                    //&& microphonePoint.Note == note.Point.Note
                 )
                 {
-                    //if (microphonePoint.Note == note.Point.Note)
                     if (microphonePoint.Note % 12 == note.Point.Note % 12) //in case the note is the same but on a different octave
                     {
                         m_NoteConveyor.RemoveAt(i);
@@ -171,13 +164,13 @@ namespace Slay
                         note.Rigidbody.isKinematic = false;
                         note.Rigidbody.useGravity = true;
                         note.Rigidbody.AddForce(Vector3.back * m_ProjectileForce, ForceMode.Impulse);
-                        //Debug.Log($"<color=#00ff00>O: Ref {PitchEstimator.MidiNoteToName(note.Point.Note)} ({note.Point.Note}): Microphone {PitchEstimator.MidiNoteToName(microphonePoint.Note)} ({microphonePoint.Note})</color>");
-                        Debug.Log($"<color=#00ff00>O: Ref {PitchEstimator.MidiNoteToName(note.Point.Note)} ({note.Point.Note}): {ServiceLocator<MicrophoneController>.Service.GetMicrophoneName()} {PitchEstimator.MidiNoteToName(microphonePoint.Note)} ({microphonePoint.Note})</color>");
+                        Debug.Log($"<color=#00ff00>O: Ref {PitchEstimator.MidiNoteToName(note.Point.Note)} ({note.Point.Note}): Microphone {PitchEstimator.MidiNoteToName(microphonePoint.Note)} ({microphonePoint.Note})</color>");
+                        //Debug.Log($"<color=#00ff00>O: Ref {PitchEstimator.MidiNoteToName(note.Point.Note)} ({note.Point.Note}): {ServiceLocator<MicrophoneController>.Service.GetMicrophoneName()} {PitchEstimator.MidiNoteToName(microphonePoint.Note)} ({microphonePoint.Note})</color>");
                     }
                     else
                     {
-                        //Debug.Log($"<color=#ff0000>X: Ref {PitchEstimator.MidiNoteToName(note.Point.Note)} ({note.Point.Note}): Microphone {PitchEstimator.MidiNoteToName(microphonePoint.Note)} ({microphonePoint.Note})</color>");
-                        Debug.Log($"<color=#ff0000>X: Ref {PitchEstimator.MidiNoteToName(note.Point.Note)} ({note.Point.Note}): {ServiceLocator<MicrophoneController>.Service.GetMicrophoneName()} {PitchEstimator.MidiNoteToName(microphonePoint.Note)} ({microphonePoint.Note})</color>");
+                        Debug.Log($"<color=#ff0000>X: Ref {PitchEstimator.MidiNoteToName(note.Point.Note)} ({note.Point.Note}): Microphone {PitchEstimator.MidiNoteToName(microphonePoint.Note)} ({microphonePoint.Note})</color>");
+                        //Debug.Log($"<color=#ff0000>X: Ref {PitchEstimator.MidiNoteToName(note.Point.Note)} ({note.Point.Note}): {ServiceLocator<MicrophoneController>.Service.GetMicrophoneName()} {PitchEstimator.MidiNoteToName(microphonePoint.Note)} ({microphonePoint.Note})</color>");
                     }
 
                 }

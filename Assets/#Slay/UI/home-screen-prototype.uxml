@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/%23Slay/UI/styles/prototype-stylesheet.uss?fileID=7433441132597879392&amp;guid=36634c5c9ed55144d81e614b2c266352&amp;type=3#prototype-stylesheet" />
+    <ui:VisualElement style="flex-grow: 1; align-self: stretch; justify-content: space-around;">
+        <ui:VisualElement name="Container" style="flex-grow: 1; align-self: stretch; justify-content: space-around; align-items: center;">
+            <ui:Button text="Britney Spears" name="ButtonBritney" class="button" />
+            <ui:Button text="Chapel Roan" name="ButtonChapel" class="button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
