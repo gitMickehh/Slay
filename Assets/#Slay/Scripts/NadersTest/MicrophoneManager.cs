@@ -4,27 +4,10 @@ using System.Collections.Generic;
 using Techno;
 using UnityEngine;
 
-public class MicrophoneManager : MonoBehaviour
+public class MicrophoneManager : Singer
 {
-    public int sampleWindow = 64;
-
     private AudioClip _microphoneClip;
     private string _microphoneName;
-
-    [Header("Loudness Settings")]
-    [SerializeField]
-    private float loudnessSensibility = 5f;
-    [SerializeField]
-    private float threshold = 0.1f;
-
-    [Header("Hearing Back")]
-    [SerializeField]
-    private AudioSource m_AudioSource;
-
-    [Header("Pitch Settings")]
-    [SerializeField]
-    private PitchEstimatorConfiguration m_PitchConfiguration;
-    private PitchEstimator m_PitchEstimator;
 
     private void Start()
     {
@@ -52,44 +35,10 @@ public class MicrophoneManager : MonoBehaviour
         return loudness;
     }
 
-    private float GetLoudnessFromAudioClip(int clipPosition, AudioClip clip)
+    public override AcapellaTimeseriesPoint EstimatePitch()
     {
-        int startPosition = clipPosition - sampleWindow;
-        if (startPosition <= 0) return 0;
-
-        float[] waveData = new float[sampleWindow];
-        clip.GetData(waveData, startPosition);
-
-        float totalLoudness = 0;
-
-        foreach (var sample in waveData)
-        {
-            totalLoudness += Mathf.Abs(sample);
-        }
-
-        return totalLoudness / sampleWindow;        //mean loudness
-    }
-
-    public AcapellaTimeseriesPoint EstimatePitch()
-    {
-        AcapellaTimeseriesPoint m_AcapellaTimeseriesPoint = new() { IsSilence = true };
-        if (GetLoudnessFromMicrophone() == 0) return m_AcapellaTimeseriesPoint;
-
-        float estimate = m_PitchEstimator.Estimate(m_AudioSource, m_PitchConfiguration);
-
-        if (!float.IsNaN(estimate))
-        {
-            m_AcapellaTimeseriesPoint.IsSilence = false;
-            m_AcapellaTimeseriesPoint.Time = m_AudioSource.time;
-            m_AcapellaTimeseriesPoint.Frequency = estimate;
-            m_AcapellaTimeseriesPoint.Note = PitchEstimator.MidiNoteFromFrequency(estimate);
-        }
-
-#if UNITY_EDITOR
-        //if (!m_AcapellaTimeseriesPoint.IsSilence) Debug.Log(PitchEstimator.MidiNoteToName(m_AcapellaTimeseriesPoint.Note));
-#endif
-
-        return m_AcapellaTimeseriesPoint;
+        if (GetLoudnessFromMicrophone() == 0) return new() { IsSilence = true };
+        return base.EstimatePitch();
     }
 
 }
