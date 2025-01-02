@@ -15,3 +15,4 @@ MonoBehaviour:
   codename: Britney
   instrumental: {fileID: 8300000, guid: df9505f287433fc43bdceddab17c2e9f, type: 3}
   acapella: {fileID: 8300000, guid: 9f260adaba1b00140b4e40015d08499c, type: 3}
+  lyricsFile: {fileID: 4900000, guid: 98ababffbf3c62c4b9057ff9c69f5a00, type: 3}

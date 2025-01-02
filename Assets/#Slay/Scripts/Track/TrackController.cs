@@ -8,6 +8,11 @@ namespace Slay
     public class TrackController : MonoBehaviour
     {
         #region Inspector
+        [Header("Scriptable References")]
+        [SerializeField]
+        private SongReference m_SongReference;
+
+        [Header("Audio Sources")]
         [SerializeField]
         private AudioSource m_AudioSourceInstrumental;
 
@@ -15,8 +20,9 @@ namespace Slay
         private AudioSource m_AudioSourceAcapella;
 
         [SerializeField]
-        private SongReference m_SongReference;
+        private bool m_PlayAcapella = false;
 
+        [Header("Note")]
         [SerializeField]
         private GameObject m_NotePrefab;
 
@@ -32,6 +38,7 @@ namespace Slay
         [SerializeField]
         private Transform m_NoteGraveyard;
 
+        [Header("Track Settings")]
         // We'll just say 1 unit in space == 1 second in time by default
         [SerializeField]
         private float m_UnitsPerSecond = 1f;
@@ -44,9 +51,6 @@ namespace Slay
 
         [SerializeField]
         private float m_ProjectileYBeforeRecycle = -20f;
-
-        [SerializeField]
-        private bool m_PlayAcapella = false;
         #endregion
 
         #region State

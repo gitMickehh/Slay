@@ -15,3 +15,4 @@ MonoBehaviour:
   codename: Charlie
   instrumental: {fileID: 8300000, guid: 9d5d7e462c82ba243a73db4c077117bd, type: 3}
   acapella: {fileID: 8300000, guid: 6cc977bd0b261444bb2b8c8c0490ac13, type: 3}
+  lyricsFile: {fileID: 4900000, guid: 19b7116336bfd124faa135bae7831694, type: 3}

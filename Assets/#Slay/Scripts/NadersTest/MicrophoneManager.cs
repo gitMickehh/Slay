@@ -13,7 +13,6 @@ public class MicrophoneManager : Singer
     {
         m_PitchEstimator = new();
         MicrophoneToAudioClip(0);
-
         ServiceLocator<MicrophoneManager>.Service = this;
     }
 
