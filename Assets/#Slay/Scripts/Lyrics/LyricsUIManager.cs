@@ -11,6 +11,8 @@ public class LyricsUIManager : MonoBehaviour
     LyricLine currentLine;
     string[] splitContent;
 
+    public Color highlightColor;
+
     private void OnEnable()
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
@@ -44,7 +46,8 @@ public class LyricsUIManager : MonoBehaviour
 
     private string GetHighlightedString(float timeStamp)
     {
-        string returnString = "<color=\"red\">";
+        //string returnString = "<color=\"red\">";
+        string returnString = "<color=#" + ColorUtility.ToHtmlStringRGBA(highlightColor) + ">";
 
         LyricLine lyricLine = lyricsManager.GetLyricLineFromTime(timeStamp);
         if (lyricLine != null)
