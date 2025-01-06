@@ -88,7 +88,10 @@ namespace Slay
                 m_MidiNoteCount = m_MaxMidiNote - m_MinMidiNote;
             }
             else
+            {
+                Debug.LogError("File: " + m_SongReference.Value.SongPath + " doesn't exist. Stopping.");
                 gameObject.SetActive(false);
+            }
         }
 
         private void Start()
@@ -196,7 +199,16 @@ namespace Slay
                     GraveyardNote(note);
                 }
             }
+
+            UpdateLyrics();
         }
+
+        private void UpdateLyrics()
+        {
+            if (ServiceLocator<LyricsUIManager>.HasService)
+                ServiceLocator<LyricsUIManager>.Service.UpdateSubtitles(m_AudioSourceInstrumental.time);
+        }
+
         #endregion
 
         #region Helpers

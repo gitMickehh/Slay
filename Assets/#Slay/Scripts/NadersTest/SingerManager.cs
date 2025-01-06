@@ -16,11 +16,11 @@ public class SingerManager : MonoBehaviour
     {
         if (singerIsPlayer.Value)
         {
-            singer = Instantiate(microphoneSinger);
+            singer = Instantiate(microphoneSinger, transform);
         }
         else
         {
-            singer = Instantiate(npcSinger);
+            singer = Instantiate(npcSinger, transform);
         }
 
         ServiceLocator<SingerManager>.Service = this;

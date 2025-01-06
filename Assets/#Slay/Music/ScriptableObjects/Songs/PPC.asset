@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df210b87fa661e488bfc7eeac949659, type: 3}
+  m_Name: PPC
+  m_EditorClassIdentifier: 
+  codename: PPC
+  instrumental: {fileID: 8300000, guid: 218efd5b7ad028c48bd04d8124fb3eda, type: 3}
+  acapella: {fileID: 8300000, guid: 7ec48bbab36f5c84abad3290c12e9246, type: 3}
+  lyricsFile: {fileID: 4900000, guid: 98ababffbf3c62c4b9057ff9c69f5a00, type: 3}

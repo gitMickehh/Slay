@@ -16,4 +16,10 @@ public class LyricLine
         end = e;
         content = c;
     }
+
+    public bool IsEqual(LyricLine other)
+    {
+        if (other == null) return false;
+        return begin == other.begin && end == other.end && content == other.content;
+    }
 }

@@ -17,7 +17,7 @@ public class LyricsManager : MonoBehaviour
     private void GetLyricsFromJSON(string jsonFile)
     {
         lyrics = JsonUtility.FromJson<Lyrics>(jsonFile);
-        Debug.Log(lyrics.lines.Length);
+        //Debug.Log(lyrics.lines.Length);
     }
 
     public string GetLineFromTime(float timeStamp)
@@ -30,6 +30,17 @@ public class LyricsManager : MonoBehaviour
         }
 
         return "";
+    }
+
+    public LyricLine GetLyricLineFromTime(float timeStamp)
+    {
+        var newLineObject = lyrics.GetLine(timeStamp);
+        if (newLineObject != null)
+        {
+            return newLineObject;
+        }
+
+        return null;
     }
 
     public LyricLine GetLyricLine(int index)

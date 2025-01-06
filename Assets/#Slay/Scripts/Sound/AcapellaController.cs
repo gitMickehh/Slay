@@ -45,6 +45,10 @@ namespace Slay
                 Debug.Log("Acapella timeseries file already exists");
                 return;
             }
+            else
+            {
+                Debug.Log("Acapella timeseries file in the making: " + outputFile);
+            }
 
             m_AudioSource.clip = m_SongReference.Value.acapella;
 
