@@ -8,18 +8,25 @@ public class MainMenuUI : MonoBehaviour
 {
     public SongReference songReference;
 
+    [Header("Songs")]
     public Song britneySong;
-    public Song chapelSong;
+    public Song charlieSong;
+    public Song MileySong;
+    public Song PPCSong;
 
     private void OnEnable()
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
         Button buttonBritney = root.Q<Button>("ButtonBritney");
+        Button buttonCharlie = root.Q<Button>("ButtonCharlie");
+        Button buttonMiley = root.Q<Button>("ButtonMiley");
         Button buttonChapel = root.Q<Button>("ButtonChapel");
 
         buttonBritney.clicked += OnClickBritney;
-        buttonChapel.clicked += OnClickChapel;
+        buttonCharlie.clicked += OnClickCharlie;
+        buttonMiley.clicked += OnClickMiley;
+        buttonChapel.clicked += OnClickPPC;
     }
 
     private void OnClickBritney()
@@ -28,9 +35,21 @@ public class MainMenuUI : MonoBehaviour
         StartNextScene();
     }
 
-    private void OnClickChapel()
+    private void OnClickCharlie()
     {
-        SetSongReference(chapelSong);
+        SetSongReference(charlieSong);
+        StartNextScene();
+    }
+
+    private void OnClickPPC()
+    {
+        SetSongReference(PPCSong);
+        StartNextScene();
+    }
+
+    private void OnClickMiley()
+    {
+        SetSongReference(MileySong);
         StartNextScene();
     }
 

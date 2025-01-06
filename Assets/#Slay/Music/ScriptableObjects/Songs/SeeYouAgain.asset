@@ -15,4 +15,4 @@ MonoBehaviour:
   codename: SeeYouAgain
   instrumental: {fileID: 8300000, guid: a5f04f3116bab2a489dd628f3ed28c7d, type: 3}
   acapella: {fileID: 8300000, guid: ab189ba5bfa38e54184ace78f7871979, type: 3}
-  lyricsFile: {fileID: 4900000, guid: 98ababffbf3c62c4b9057ff9c69f5a00, type: 3}
+  lyricsFile: {fileID: 4900000, guid: 5de5576e215b26d4ab4f2f385e81612d, type: 3}

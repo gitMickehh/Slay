@@ -3,7 +3,9 @@
     <ui:VisualElement style="flex-grow: 1; align-self: stretch; justify-content: space-around;">
         <ui:VisualElement name="Container" style="flex-grow: 1; align-self: stretch; justify-content: space-around; align-items: center;">
             <ui:Button text="Britney Spears" name="ButtonBritney" class="button" />
-            <ui:Button text="Chapel Roan" name="ButtonChapel" class="button" />
+            <ui:Button text="Charlie!" name="ButtonCharlie" class="button" />
+            <ui:Button text="Miley" name="ButtonMiley" class="button" />
+            <ui:Button text="Pink Pony Club" name="ButtonChapel" class="button" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
