@@ -8,7 +8,8 @@ public class MicrophoneManager : Singer
 {
     private AudioClip _microphoneClip;
     private string _microphoneName;
-
+    private int currentNote;
+    
     private void Start()
     {
         m_PitchEstimator = new();
@@ -37,7 +38,16 @@ public class MicrophoneManager : Singer
     public override AcapellaTimeseriesPoint EstimatePitch()
     {
         if (GetLoudnessFromMicrophone() == 0) return new() { IsSilence = true };
-        return base.EstimatePitch();
+        var pointReturn = base.EstimatePitch();
+
+        currentNote = pointReturn.Note;
+
+        return pointReturn;
+    }
+
+    public int GetCurrentNote()
+    {
+        return currentNote;
     }
 
 }

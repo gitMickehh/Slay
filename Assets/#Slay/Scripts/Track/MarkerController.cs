@@ -27,6 +27,7 @@ namespace Slay
         public float TrackStartY => m_TrackBottomRight.position.y;
         public float TrackZ => m_TrackBottomRight.position.z;
         public float TrackEndX => m_TrackBottomLeft.position.x;
+        public float TrackEndY => m_TrackTopRight.position.y;
         #endregion
     }
 }

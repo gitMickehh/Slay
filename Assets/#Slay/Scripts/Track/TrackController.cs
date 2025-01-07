@@ -51,6 +51,10 @@ namespace Slay
 
         [SerializeField]
         private float m_ProjectileYBeforeRecycle = -20f;
+
+        [SerializeField]
+        private MicrophoneTrackIndicator trackInputIndicator;
+
         #endregion
 
         #region State
@@ -99,9 +103,12 @@ namespace Slay
             m_NoteBlasted = new();
             m_NoteConveyor = new();
             m_AudioSourceInstrumental.Play();
+            
             if (m_PlayAcapella)
                 m_AudioSourceAcapella.Play();
             m_TimeSinceLastNoteSample = TimeBetweenSamples;
+
+            trackInputIndicator.SetUpTrackIndicator(m_MinMidiNote, m_MidiNoteCount);
         }
 
         private void Update()
