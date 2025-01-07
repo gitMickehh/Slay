@@ -1,11 +1,6 @@
 using Slay;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
 using Techno;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class MicrophoneTrackIndicator : MonoBehaviour
 {
@@ -20,17 +15,13 @@ public class MicrophoneTrackIndicator : MonoBehaviour
     private int m_minMidiNote;
     private int m_midiNoteCount;
 
-    private void Start()
-    {
-        ready = false;
-    }
-
     public void SetUpTrackIndicator(int minMidiNote, int midiNoteCount)
     {
         m_minMidiNote = minMidiNote;
         m_midiNoteCount = midiNoteCount;
 
         ready = true;
+        Debug.Log(ready);
     }
 
     private void Update()
