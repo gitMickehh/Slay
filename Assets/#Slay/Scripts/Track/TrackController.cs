@@ -113,6 +113,9 @@ namespace Slay
 
         private void Update()
         {
+            if (!ServiceLocator<MicrophoneManager>.HasService) return;
+
+
             // Sample
             float time = m_AudioSourceInstrumental.time;
             float readaheadSizeSeconds = MidpointToStart * m_UnitsPerSecond;

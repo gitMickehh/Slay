@@ -19,7 +19,7 @@ public class Singer : MonoBehaviour
     public PitchEstimatorConfiguration m_PitchConfiguration;
     public PitchEstimator m_PitchEstimator;
 
-    private void Start()
+    public virtual void StartSinger()
     {
         m_PitchEstimator = new();
     }

@@ -32,6 +32,8 @@ public class MicrophoneTrackIndicator : MonoBehaviour
 
     private void UpdateTrackIndicator(int minMidiNote, int midiNoteCount)
     {
+        if (!ServiceLocator<MicrophoneManager>.HasService) return;
+
         var note = ServiceLocator<MicrophoneManager>.Service.GetCurrentNote();
 
         if (note == 0)

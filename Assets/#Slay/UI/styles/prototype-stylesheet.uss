@@ -51,3 +51,7 @@
     transition-timing-function: ease;
     transition-delay: 0s;
 }
+
+.signal .unity-progress-bar__progress {
+    background-color: rgb(37, 255, 0);
+}

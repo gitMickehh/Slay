@@ -24,6 +24,7 @@ public class SingerManager : MonoBehaviour
         }
 
         ServiceLocator<SingerManager>.Service = this;
+        singer.StartSinger();
     }
 
 }

@@ -1,11 +1,16 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
     <Style src="project://database/Assets/%23Slay/UI/styles/prototype-stylesheet.uss?fileID=7433441132597879392&amp;guid=36634c5c9ed55144d81e614b2c266352&amp;type=3#prototype-stylesheet" />
-    <ui:VisualElement style="flex-grow: 1; align-self: stretch; justify-content: space-around;">
+    <ui:VisualElement style="flex-grow: 1; align-self: stretch; justify-content: space-around; font-size: 25px; color: rgb(137, 38, 132);">
         <ui:VisualElement name="Container" style="flex-grow: 1; align-self: stretch; justify-content: space-around; align-items: center;">
-            <ui:Button text="Britney Spears" name="ButtonBritney" class="button" />
-            <ui:Button text="Charlie!" name="ButtonCharlie" class="button" />
-            <ui:Button text="Miley" name="ButtonMiley" class="button" />
-            <ui:Button text="Pink Pony Club" name="ButtonChapel" class="button" />
+            <ui:DropdownField label="Song" choices="Pink Pony Club,Oops I Did it Again" name="SongChoice" index="0" style="min-width: 600px; font-size: 25px;" />
+            <ui:Toggle label="Attacker/Singer" value="true" name="AttackModeToggle" style="min-width: 300px; justify-content: space-between; align-items: center; align-self: auto;" />
+            <ui:VisualElement name="SoundContainer" style="flex-grow: 1; max-height: 200px; min-width: 800px; justify-content: space-around;">
+                <ui:ProgressBar value="22" title="Signal" name="audioSignal" class="signal" style="min-width: auto;" />
+                <ui:DropdownField label="Microphone" name="microphoneDropDown" />
+            </ui:VisualElement>
+            <ui:VisualElement name="SoundContainer" style="flex-grow: 1; max-height: 200px; min-width: 800px; justify-content: space-around;">
+                <ui:Button text="Start" name="startButton" class="button" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

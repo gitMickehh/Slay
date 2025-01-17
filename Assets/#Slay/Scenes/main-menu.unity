@@ -182,10 +182,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songReference: {fileID: 11400000, guid: 2bb885b943ee49d418fbfa560260fb2f, type: 2}
-  britneySong: {fileID: 11400000, guid: 50f85e64253cc94478ef6b7297496978, type: 2}
-  charlieSong: {fileID: 11400000, guid: 3e4373e7601f16643a6cb8968c69c70d, type: 2}
-  MileySong: {fileID: 11400000, guid: 814c438d9f674d64596d24b1af03ea18, type: 2}
-  PPCSong: {fileID: 11400000, guid: 65240a28aaefaca43ad9fb7a977b7865, type: 2}
+  microphoneName: {fileID: 11400000, guid: 8e342e4a248dc47429120c636f945c8b, type: 2}
+  songs:
+  - {fileID: 11400000, guid: 65240a28aaefaca43ad9fb7a977b7865, type: 2}
+  - {fileID: 11400000, guid: 50f85e64253cc94478ef6b7297496978, type: 2}
+  - {fileID: 11400000, guid: 3e4373e7601f16643a6cb8968c69c70d, type: 2}
+  - {fileID: 11400000, guid: 814c438d9f674d64596d24b1af03ea18, type: 2}
 --- !u!1 &880691830
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +410,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.11147204, g: 0.12098913, b: 0.14150941, a: 1}
+  m_BackGroundColor: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -508,6 +510,74 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1001 &1671546757
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5232161770315599468, guid: f3eca8c3255ee8f46ad35ee407a92aed,
+        type: 3}
+      propertyPath: m_Name
+      value: MicrophoneManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839979103721702285, guid: f3eca8c3255ee8f46ad35ee407a92aed,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839979103721702285, guid: f3eca8c3255ee8f46ad35ee407a92aed,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839979103721702285, guid: f3eca8c3255ee8f46ad35ee407a92aed,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839979103721702285, guid: f3eca8c3255ee8f46ad35ee407a92aed,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839979103721702285, guid: f3eca8c3255ee8f46ad35ee407a92aed,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839979103721702285, guid: f3eca8c3255ee8f46ad35ee407a92aed,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839979103721702285, guid: f3eca8c3255ee8f46ad35ee407a92aed,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839979103721702285, guid: f3eca8c3255ee8f46ad35ee407a92aed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839979103721702285, guid: f3eca8c3255ee8f46ad35ee407a92aed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839979103721702285, guid: f3eca8c3255ee8f46ad35ee407a92aed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3eca8c3255ee8f46ad35ee407a92aed, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -516,3 +586,4 @@ SceneRoots:
   - {fileID: 880691832}
   - {fileID: 1113862778}
   - {fileID: 361006455}
+  - {fileID: 1671546757}

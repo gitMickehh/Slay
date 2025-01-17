@@ -9,18 +9,22 @@ public class MicrophoneManager : Singer
     private AudioClip _microphoneClip;
     private string _microphoneName;
     private int currentNote;
-    
+    public StringReference MicrophoneName;
+
     private void Start()
     {
-        m_PitchEstimator = new();
-        MicrophoneToAudioClip(0);
         ServiceLocator<MicrophoneManager>.Service = this;
     }
 
-    private void MicrophoneToAudioClip(int microphoneIndex)
+    public override void StartSinger()
     {
-        _microphoneName = Microphone.devices[microphoneIndex];
-        _microphoneClip = Microphone.Start(_microphoneName, true, 20, AudioSettings.outputSampleRate);
+        m_PitchEstimator = new();
+        MicrophoneToAudioClip(MicrophoneName.Value);
+    }
+
+    private void MicrophoneToAudioClip(string microphoneName)
+    {
+        _microphoneClip = Microphone.Start(microphoneName, true, 20, AudioSettings.outputSampleRate);
 
         m_AudioSource.clip = _microphoneClip;
         m_AudioSource.loop = true;
@@ -50,4 +54,8 @@ public class MicrophoneManager : Singer
         return currentNote;
     }
 
+    private void OnDisable()
+    {
+        ServiceLocator<MicrophoneManager>.Reset();
+    }
 }
