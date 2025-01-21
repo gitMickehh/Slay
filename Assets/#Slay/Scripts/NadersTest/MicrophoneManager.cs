@@ -11,9 +11,12 @@ public class MicrophoneManager : Singer
     private int currentNote;
     public StringReference MicrophoneName;
 
+    private string currentMicrophoneName;
+
     private void Start()
     {
         ServiceLocator<MicrophoneManager>.Service = this;
+        currentMicrophoneName = "";
     }
 
     public override void StartSinger()
@@ -22,8 +25,30 @@ public class MicrophoneManager : Singer
         MicrophoneToAudioClip(MicrophoneName.Value);
     }
 
+    public void RestartMicrophoneSinger()
+    {
+
+        if (!string.IsNullOrEmpty(currentMicrophoneName))
+        {
+            if (currentMicrophoneName == MicrophoneName.Value)
+                return;
+
+            m_AudioSource.Stop();
+            Microphone.End(currentMicrophoneName);
+        }
+        else
+        {
+            StartSinger();
+            return;
+        }
+
+        MicrophoneToAudioClip(MicrophoneName.Value);
+    }
+
     private void MicrophoneToAudioClip(string microphoneName)
     {
+        currentMicrophoneName = microphoneName;
+
         _microphoneClip = Microphone.Start(microphoneName, true, 20, AudioSettings.outputSampleRate);
 
         m_AudioSource.clip = _microphoneClip;

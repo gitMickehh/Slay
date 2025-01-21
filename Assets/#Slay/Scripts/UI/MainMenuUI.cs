@@ -26,15 +26,6 @@ public class MainMenuUI : MonoBehaviour
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
-        //Button buttonBritney = root.Q<Button>("ButtonBritney");
-        //Button buttonCharlie = root.Q<Button>("ButtonCharlie");
-        //Button buttonMiley = root.Q<Button>("ButtonMiley");
-        //Button buttonChapel = root.Q<Button>("ButtonChapel");
-        //buttonBritney.clicked += OnClickBritney;
-        //buttonCharlie.clicked += OnClickCharlie;
-        //buttonMiley.clicked += OnClickMiley;
-        //buttonChapel.clicked += OnClickPPC;
-
         DropdownField songDropDownField = root.Q<DropdownField>("SongChoice");
         songDropDownField.choices = GetSongsAsList();
         songDropDownField.RegisterValueChangedCallback(evt => SetSongByString(evt.newValue));
@@ -42,8 +33,6 @@ public class MainMenuUI : MonoBehaviour
 
         microphonesDropDownField = root.Q<DropdownField>("microphoneDropDown");
         microphonesDropDownField.choices = Microphone.devices.ToList<string>();
-        //microphonesDropDownField.index = 0;
-        //microphonesDropDownField.RegisterValueChangedCallback(evt => SetMicrophoneName(evt.newValue));
 
         microphoneSignalBar = root.Q<ProgressBar>("audioSignal");
         microphoneSignalBar.value = 0;
@@ -61,7 +50,7 @@ public class MainMenuUI : MonoBehaviour
 
         microphonesDropDownField.RegisterValueChangedCallback(evt => SetMicrophoneName(evt.newValue));
         microphonesDropDownField.index = 0;
-        ServiceLocator<MicrophoneManager>.Service.StartSinger();
+        //ServiceLocator<MicrophoneManager>.Service.StartSinger();
     }
 
     private List<string> GetSongsAsList()
@@ -96,6 +85,7 @@ public class MainMenuUI : MonoBehaviour
 
     private void SetMicrophoneName(string microphoneDeviceName)
     {
+        ServiceLocator<MicrophoneManager>.Service.RestartMicrophoneSinger();
         microphoneName.Value = microphoneDeviceName;
     }
 
