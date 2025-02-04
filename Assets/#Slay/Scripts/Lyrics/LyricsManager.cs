@@ -18,6 +18,7 @@ public class LyricsManager : MonoBehaviour
     {
         lyrics = JsonUtility.FromJson<Lyrics>(jsonFile);
         //Debug.Log(lyrics.lines.Length);
+        lyrics.SetIndexesOfLines();
     }
 
     public string GetLineFromTime(float timeStamp)
@@ -30,6 +31,18 @@ public class LyricsManager : MonoBehaviour
         }
 
         return "";
+    }
+
+    public string GetNextLine(int currentIndex)
+    {
+        string returnString = "";
+
+        if(currentIndex+1 < lyrics.lines.Length)
+        {
+            returnString = lyrics.lines[currentIndex + 1].content;
+        }
+
+        return returnString;
     }
 
     public LyricLine GetLyricLineFromTime(float timeStamp)

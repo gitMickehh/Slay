@@ -23,7 +23,7 @@ public class SingerManager : MonoBehaviour
             singer = Instantiate(npcSinger, transform);
         }
 
-        ServiceLocator<SingerManager>.Service = this;
+        //ServiceLocator<SingerManager>.Service = this;
         singer.StartSinger();
     }
 

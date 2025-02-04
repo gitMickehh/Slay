@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/#Slay/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/#Slay/Scenes/test-scenes/MidiTestScene.unity
+    guid: 89bbfa29ae1a9444ebf7e3e3e22fc0a7
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

@@ -8,6 +8,7 @@ public class LyricLine
     public float begin;
     public float end;
     public string content;
+    public int index;
 
     public LyricLine(float b, float e, string c)
     {

@@ -188,6 +188,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50f85e64253cc94478ef6b7297496978, type: 2}
   - {fileID: 11400000, guid: 3e4373e7601f16643a6cb8968c69c70d, type: 2}
   - {fileID: 11400000, guid: 814c438d9f674d64596d24b1af03ea18, type: 2}
+  MIDI_Britney: {fileID: 11400000, guid: 25a538692b8a40a41a4fdfe8ffd8b581, type: 2}
 --- !u!1 &880691830
 GameObject:
   m_ObjectHideFlags: 0

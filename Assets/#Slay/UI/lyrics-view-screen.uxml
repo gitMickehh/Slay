@@ -1,5 +1,6 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
-    <ui:VisualElement name="Container" style="flex-grow: 1; flex-direction: column-reverse;">
+    <ui:VisualElement name="Container" style="flex-grow: 1; flex-direction: column-reverse; color: rgb(207, 207, 207);">
+        <ui:Label text="A Man after midnight, won&apos;t somebody help me" name="future-subtitles" style="-unity-text-align: middle-center; font-size: 40px; color: rgba(207, 207, 207, 0.5);" />
         <ui:Label text="&lt;color=&quot;red&quot;&gt;Give me &lt;/color&gt; Give me Give me a man after midnight" name="subtitles" style="-unity-text-align: middle-center; font-size: 40px;" />
     </ui:VisualElement>
 </ui:UXML>

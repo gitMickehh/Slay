@@ -24,10 +24,12 @@ namespace Slay
         public float TrackHeight =>
             Mathf.Abs(m_TrackBottomRight.position.y - m_TrackTopRight.position.y);
         public float TrackStartX => m_TrackBottomRight.position.x;
-        public float TrackStartY => m_TrackBottomRight.position.y;
-        public float TrackZ => m_TrackBottomRight.position.z;
         public float TrackEndX => m_TrackBottomLeft.position.x;
+        public float TrackStartY => m_TrackBottomRight.position.y;
         public float TrackEndY => m_TrackTopRight.position.y;
+        public float TrackZ => m_TrackBottomRight.position.z;
+
+        public Vector3 TrackMidpoint => new Vector3(TrackStartX + TrackEndX / 2f, TrackStartY + TrackEndY / 2f, TrackZ);
         #endregion
     }
 }

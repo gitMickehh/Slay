@@ -11,12 +11,15 @@ public class LyricsUIManager : MonoBehaviour
     LyricLine currentLine;
     string[] splitContent;
 
+    Label futureSubtitleLabel;
+
     public Color highlightColor;
 
     private void OnEnable()
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
         subtitleLabel = root.Q<Label>("subtitles");
+        futureSubtitleLabel = root.Q<Label>("future-subtitles");
     }
 
     private void Start()
@@ -42,6 +45,7 @@ public class LyricsUIManager : MonoBehaviour
     public void UpdateSubtitles(float timeStamp)
     {
         subtitleLabel.text = GetHighlightedString(timeStamp);
+        futureSubtitleLabel.text = GetFutureSubtitleString(currentLine);
     }
 
     private string GetHighlightedString(float timeStamp)
@@ -72,5 +76,11 @@ public class LyricsUIManager : MonoBehaviour
 
         currentLine = lyricLine;
         return returnString;
+    }
+
+    private string GetFutureSubtitleString(LyricLine currentlyUsedLine)
+    {
+        if (currentlyUsedLine == null) return "";
+        return lyricsManager.GetNextLine(currentlyUsedLine.index);
     }
 }

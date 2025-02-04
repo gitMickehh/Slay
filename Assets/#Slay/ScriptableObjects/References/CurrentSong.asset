@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fef7798b39940304da7e9ccf27e54e4c, type: 3}
   m_Name: CurrentSong
   m_EditorClassIdentifier: 
-  Value: {fileID: 11400000, guid: 50f85e64253cc94478ef6b7297496978, type: 2}
+  Value: {fileID: 11400000, guid: 25a538692b8a40a41a4fdfe8ffd8b581, type: 2}

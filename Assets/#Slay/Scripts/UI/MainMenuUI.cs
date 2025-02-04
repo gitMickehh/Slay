@@ -18,6 +18,7 @@ public class MainMenuUI : MonoBehaviour
     //public Song PPCSong;
 
     public List<Song> songs;
+    public Song MIDI_Britney;
 
     DropdownField microphonesDropDownField;
     ProgressBar microphoneSignalBar;
@@ -39,6 +40,9 @@ public class MainMenuUI : MonoBehaviour
 
         Button startButton = root.Q<Button>("startButton");
         startButton.clicked += StartNextScene;
+        
+        Button startMidiButton = root.Q<Button>("startMidiButton");
+        startMidiButton.clicked += StartMidiButton;
 
         StartCoroutine(LateStart());
     }
@@ -92,6 +96,12 @@ public class MainMenuUI : MonoBehaviour
     private void StartNextScene()
     {
         SceneManager.LoadScene(1);
+    }
+
+    private void StartMidiButton()
+    {
+        songReference.Value = MIDI_Britney;
+        SceneManager.LoadScene(2);
     }
 
     private float GetSignalFloat(float loudness, float maxLoudness)

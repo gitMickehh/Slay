@@ -9,19 +9,27 @@ public class MicrophoneTrackIndicator : MonoBehaviour
     private MarkerController m_MarkerController;
 
     [SerializeField]
-    private Rigidbody m_Rigidbody;
+    //private Rigidbody m_Rigidbody;
 
     private bool ready;
     private int m_minMidiNote;
     private int m_midiNoteCount;
 
+    [Header("Materials")]
+    public MeshRenderer indicator_mesh;
+    public Material incoming_input_material;
+    public Material no_input_material;
+    bool incomingInput;
+
     public void SetUpTrackIndicator(int minMidiNote, int midiNoteCount)
     {
         m_minMidiNote = minMidiNote;
         m_midiNoteCount = midiNoteCount;
+        
+        incomingInput = false;
+        indicator_mesh.material = no_input_material;
 
         ready = true;
-        Debug.Log(ready);
     }
 
     private void Update()
@@ -34,15 +42,30 @@ public class MicrophoneTrackIndicator : MonoBehaviour
     {
         if (!ServiceLocator<MicrophoneManager>.HasService) return;
 
+
         var note = ServiceLocator<MicrophoneManager>.Service.GetCurrentNote();
 
         if (note == 0)
         {
-            m_Rigidbody.position = new Vector3(TrackXMidpoint, TrackYMidpoint, TrackZ);
+            //Debug.Log("note = 0");
+
+            if(incomingInput)
+            {
+                incomingInput = false;
+                indicator_mesh.material = no_input_material;
+                transform.localPosition = new Vector3(TrackXMidpoint, TrackYMidpoint, TrackZ);
+            }
         }
         else
         {
-            m_Rigidbody.position = GetTrackIndicatorPosition(
+            //Debug.Log("note != 0");
+            if (!incomingInput)
+            {
+                incomingInput = true;
+                indicator_mesh.material = incoming_input_material;
+            }
+
+            transform.localPosition = GetTrackIndicatorPosition(
                 note,
                 minMidiNote,
                 midiNoteCount);

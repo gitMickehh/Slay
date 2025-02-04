@@ -27,7 +27,6 @@ public class MicrophoneManager : Singer
 
     public void RestartMicrophoneSinger()
     {
-
         if (!string.IsNullOrEmpty(currentMicrophoneName))
         {
             if (currentMicrophoneName == MicrophoneName.Value)
@@ -49,7 +48,7 @@ public class MicrophoneManager : Singer
     {
         currentMicrophoneName = microphoneName;
 
-        _microphoneClip = Microphone.Start(microphoneName, true, 20, AudioSettings.outputSampleRate);
+        _microphoneClip = Microphone.Start(microphoneName, true, 1, AudioSettings.outputSampleRate);
 
         m_AudioSource.clip = _microphoneClip;
         m_AudioSource.loop = true;
