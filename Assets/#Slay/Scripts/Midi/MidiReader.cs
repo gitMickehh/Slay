@@ -116,8 +116,10 @@ public class MidiReader : MonoBehaviour
 
         GenerateNote(readaheadTime);
         UpdateNotes(time);
-        PitchLogic();
         UpdateLyrics();
+
+        if(ServiceLocator<MicrophoneManager>.HasService)
+            PitchLogic();
     }
 
     private void PitchLogic()

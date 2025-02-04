@@ -8,9 +8,8 @@
                 <ui:ProgressBar value="22" title="Signal" name="audioSignal" class="signal" style="min-width: auto;" />
                 <ui:DropdownField label="Microphone" name="microphoneDropDown" />
             </ui:VisualElement>
-            <ui:VisualElement name="SoundContainer" style="flex-grow: 1; max-height: 200px; min-width: 800px; justify-content: space-around;">
+            <ui:VisualElement name="ButtonContainer" style="flex-grow: 1; max-height: 200px; min-width: 800px; justify-content: space-around;">
                 <ui:Button text="Start" name="startButton" class="button" />
-                <ui:Button text="Start MIDI" name="startMidiButton" class="button" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
