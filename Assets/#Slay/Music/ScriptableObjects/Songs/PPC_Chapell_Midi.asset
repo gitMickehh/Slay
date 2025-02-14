@@ -16,6 +16,6 @@ MonoBehaviour:
   instrumental: {fileID: 8300000, guid: 218efd5b7ad028c48bd04d8124fb3eda, type: 3}
   acapella: {fileID: 8300000, guid: 7ec48bbab36f5c84abad3290c12e9246, type: 3}
   useMidi: 1
-  midiFileName: 
-  midiPlayback: {fileID: 0}
+  midiFileName: PPC_Chapell_MIDI
+  midiPlayback: {fileID: 8300000, guid: 15d97f649208b314591181e43ea50215, type: 3}
   lyricsFile: {fileID: 4900000, guid: 8062c07050ce56e4c89562f9c2491025, type: 3}

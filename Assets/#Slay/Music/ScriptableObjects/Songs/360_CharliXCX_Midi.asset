@@ -17,5 +17,5 @@ MonoBehaviour:
   acapella: {fileID: 8300000, guid: 6cc977bd0b261444bb2b8c8c0490ac13, type: 3}
   useMidi: 1
   midiFileName: 360_CharliXCX_MIDI
-  midiPlayback: {fileID: 0}
+  midiPlayback: {fileID: 8300000, guid: 0e945274552e63040ab8e7e46a929993, type: 3}
   lyricsFile: {fileID: 4900000, guid: 19b7116336bfd124faa135bae7831694, type: 3}

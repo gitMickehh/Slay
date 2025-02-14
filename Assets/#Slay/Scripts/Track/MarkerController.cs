@@ -27,7 +27,7 @@ namespace Slay
         public float TrackEndX => m_TrackBottomLeft.position.x;
         public float TrackStartY => m_TrackBottomRight.position.y;
         public float TrackEndY => m_TrackTopRight.position.y;
-        public float TrackZ => m_TrackBottomRight.position.z;
+        public float TrackZ => transform.localPosition.z;
 
         public Vector3 TrackMidpoint => new Vector3(TrackStartX + TrackEndX / 2f, TrackStartY + TrackEndY / 2f, TrackZ);
         #endregion

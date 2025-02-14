@@ -51,6 +51,7 @@ MonoBehaviour:
   incoming_input_material: {fileID: 2100000, guid: 591b5a7ed21b9264a9344c711e9b9af6,
     type: 2}
   no_input_material: {fileID: 2100000, guid: e59f8a08a1b056a468bf2376270b5719, type: 2}
+  lerpSpeed: 0.75
 --- !u!1001 &538677443138976686
 PrefabInstance:
   m_ObjectHideFlags: 0

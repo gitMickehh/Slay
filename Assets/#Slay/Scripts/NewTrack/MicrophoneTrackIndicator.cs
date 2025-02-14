@@ -21,6 +21,11 @@ public class MicrophoneTrackIndicator : MonoBehaviour
     public Material no_input_material;
     bool incomingInput;
 
+    [Header("Lerping Speed")]
+    public float lerpSpeed = 0.5f;
+    Vector3 currentTargetPosition;
+    float lerpTime;
+
     public void SetUpTrackIndicator(int minMidiNote, int midiNoteCount)
     {
         m_minMidiNote = minMidiNote;
@@ -28,6 +33,9 @@ public class MicrophoneTrackIndicator : MonoBehaviour
         
         incomingInput = false;
         indicator_mesh.material = no_input_material;
+
+        currentTargetPosition = Vector3.zero;
+        lerpTime = 0;
 
         ready = true;
     }
@@ -63,12 +71,28 @@ public class MicrophoneTrackIndicator : MonoBehaviour
             {
                 incomingInput = true;
                 indicator_mesh.material = incoming_input_material;
+
+                lerpTime = 0;
+                currentTargetPosition = Vector3.zero;
             }
 
-            transform.localPosition = GetTrackIndicatorPosition(
-                note,
-                minMidiNote,
-                midiNoteCount);
+            //transform.localPosition = GetTrackIndicatorPosition(
+            //    note,
+            //    minMidiNote,
+            //    midiNoteCount);
+
+            var newTargetPosition = GetTrackIndicatorPosition(note, minMidiNote, midiNoteCount);
+            if(currentTargetPosition != newTargetPosition)
+            {
+                lerpTime = 0;
+                currentTargetPosition = newTargetPosition;
+            }
+
+            lerpTime += Time.deltaTime;
+            lerpTime = Mathf.Clamp01(lerpTime / lerpSpeed);
+
+            transform.localPosition = Vector3.Lerp(transform.localPosition, 
+                GetTrackIndicatorPosition(note,minMidiNote,midiNoteCount), lerpTime); 
         }
 
     }
