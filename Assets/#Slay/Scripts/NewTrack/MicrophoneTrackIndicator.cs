@@ -17,9 +17,12 @@ public class MicrophoneTrackIndicator : MonoBehaviour
 
     [Header("Materials")]
     public MeshRenderer indicator_mesh;
-    public Material incoming_input_material;
-    public Material no_input_material;
-    bool incomingInput;
+    public Material ActiveVocalInputMaterial;
+    public Material ActiveNoInputMaterial;
+    public Material InactiveVocalInputMaterial;
+    public Material InactiveNoInputMaterial;
+    bool incomingInput;         //is true when there is input from the microphone
+    private bool activeState;   //is true when there is a note to sing in the MidPoint. Otherwise it is false
 
     [Header("Lerping Speed")]
     public float lerpSpeed = 0.5f;
@@ -32,7 +35,7 @@ public class MicrophoneTrackIndicator : MonoBehaviour
         m_midiNoteCount = midiNoteCount;
         
         incomingInput = false;
-        indicator_mesh.material = no_input_material;
+        indicator_mesh.material = InactiveNoInputMaterial;
 
         currentTargetPosition = Vector3.zero;
         lerpTime = 0;
@@ -48,10 +51,11 @@ public class MicrophoneTrackIndicator : MonoBehaviour
 
     private void UpdateTrackIndicator(int minMidiNote, int midiNoteCount)
     {
-        if (!ServiceLocator<MicrophoneManager>.HasService) return;
+        if (!ServiceLocator<SingerManager>.HasService) return;
+        if (ServiceLocator<SingerManager>.Service.CurrentSinger == null) return;
 
-
-        var note = ServiceLocator<MicrophoneManager>.Service.GetCurrentNote();
+        //var note = ServiceLocator<MicrophoneSinger>.Service.GetCurrentNote();
+        var note = ServiceLocator<SingerManager>.Service.CurrentSinger.GetCurrentNote();
 
         if (note == 0)
         {
@@ -60,7 +64,7 @@ public class MicrophoneTrackIndicator : MonoBehaviour
             if(incomingInput)
             {
                 incomingInput = false;
-                indicator_mesh.material = no_input_material;
+                indicator_mesh.material = activeState? ActiveNoInputMaterial : InactiveNoInputMaterial;
                 transform.localPosition = new Vector3(TrackXMidpoint, TrackYMidpoint, TrackZ);
             }
         }
@@ -70,10 +74,11 @@ public class MicrophoneTrackIndicator : MonoBehaviour
             if (!incomingInput)
             {
                 incomingInput = true;
-                indicator_mesh.material = incoming_input_material;
+                indicator_mesh.material = activeState? ActiveVocalInputMaterial : InactiveVocalInputMaterial;
 
                 lerpTime = 0;
-                currentTargetPosition = Vector3.zero;
+                //currentTargetPosition = Vector3.zero;
+                currentTargetPosition = transform.localPosition;
             }
 
             //transform.localPosition = GetTrackIndicatorPosition(
@@ -100,17 +105,23 @@ public class MicrophoneTrackIndicator : MonoBehaviour
     private Vector3 GetTrackIndicatorPosition(int microphoneNote, int minMidiNote, int midiNoteCount)
     {
         float positionY =
-        TrackStartY
-            + (TrackHeight * ((microphoneNote - minMidiNote) / (float)midiNoteCount));
+        m_MarkerController.TrackStartY
+            + (m_MarkerController.TrackHeight * ((microphoneNote - minMidiNote) / (float)midiNoteCount));
 
         return new Vector3(TrackXMidpoint, positionY, TrackZ);
     }
 
+    public void SetActive(bool newActiveState)
+    {
+        activeState = newActiveState;
+
+
+    }
+
+
     #region Helpers
-    private float TrackHeight => m_MarkerController.TrackHeight;
     private float TrackXMidpoint => ((m_MarkerController.TrackEndX - m_MarkerController.TrackStartX) / 2f + m_MarkerController.TrackStartX);
     private float TrackYMidpoint => ((m_MarkerController.TrackEndY - m_MarkerController.TrackStartY) / 2f + m_MarkerController.TrackStartY);
-    private float TrackStartY => m_MarkerController.TrackStartY;
     private float TrackZ => m_MarkerController.TrackZ;
     #endregion
 }

@@ -48,9 +48,14 @@ MonoBehaviour:
   m_MarkerController: {fileID: 0}
   ready: 0
   indicator_mesh: {fileID: 1204802949083227946}
-  incoming_input_material: {fileID: 2100000, guid: 591b5a7ed21b9264a9344c711e9b9af6,
+  ActiveVocalInputMaterial: {fileID: 2100000, guid: 591b5a7ed21b9264a9344c711e9b9af6,
     type: 2}
-  no_input_material: {fileID: 2100000, guid: e59f8a08a1b056a468bf2376270b5719, type: 2}
+  ActiveNoInputMaterial: {fileID: 2100000, guid: e59f8a08a1b056a468bf2376270b5719,
+    type: 2}
+  InactiveVocalInputMaterial: {fileID: 2100000, guid: 5c402905f249f024b88b613b2d13eaf8,
+    type: 2}
+  InactiveNoInputMaterial: {fileID: 2100000, guid: 205e47fd6e396674b8c3b39a43a8ed93,
+    type: 2}
   lerpSpeed: 0.75
 --- !u!1001 &538677443138976686
 PrefabInstance:
@@ -134,7 +139,7 @@ PrefabInstance:
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: e59f8a08a1b056a468bf2376270b5719, type: 2}
+      objectReference: {fileID: 2100000, guid: 205e47fd6e396674b8c3b39a43a8ed93, type: 2}
     - target: {fileID: 919132149155446097, guid: 8e44d2dcf03841249baa6128c4912c62,
         type: 3}
       propertyPath: m_Name

@@ -113,7 +113,7 @@ namespace Slay
 
         private void Update()
         {
-            if (!ServiceLocator<MicrophoneManager>.HasService) return;
+            if (!ServiceLocator<MicrophoneSinger>.HasService) return;
 
 
             // Sample
@@ -152,7 +152,7 @@ namespace Slay
             }
 
             // Move
-            AcapellaTimeseriesPoint microphonePoint = ServiceLocator<MicrophoneManager>.Service.EstimatePitch();
+            AcapellaTimeseriesPoint microphonePoint = ServiceLocator<MicrophoneSinger>.Service.EstimatePitch();
             float trackEndX = TrackEndX;
             for (int i = m_NoteConveyor.Count - 1; i >= 0; i--)
             {

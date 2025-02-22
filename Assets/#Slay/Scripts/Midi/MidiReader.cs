@@ -16,9 +16,6 @@ public class MidiReader : MonoBehaviour
     public AudioSource instrumental_source;
     public bool playMidiPlayback;
 
-    //[Header("Prefabs")]
-    //public MidiNoteObject note_object_prefab;
-
     [Header("GameObjects")]
     public MarkerController marker_controller;
     public GameObjectPool notesPool;
@@ -90,22 +87,40 @@ public class MidiReader : MonoBehaviour
     private void StartSong()
     {
         instrumental_source.clip = songReference.Value.instrumental;
+        
+        AudioSource instrumentalPlaybackSource = gameObject.AddComponent<AudioSource>();
+        instrumentalPlaybackSource.loop = false;
+        instrumentalPlaybackSource.playOnAwake = false;
+        instrumentalPlaybackSource.Stop();
 
         if (playMidiPlayback)
         {
-            var instrumentalPlaybackSource = gameObject.AddComponent<AudioSource>();
-            instrumentalPlaybackSource.loop = false;
-            instrumentalPlaybackSource.playOnAwake = false;
-            instrumentalPlaybackSource.Stop();
-
             instrumentalPlaybackSource.clip = songReference.Value.midiPlayback;
-            instrumentalPlaybackSource.Play();
         }
 
+        StartCoroutine(LateStart(instrumentalPlaybackSource));
+    }
+
+    private IEnumerator LateStart(AudioSource midiPlayback)
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+
         instrumental_source.loop = false;
-        instrumental_source.Play();
 
         microphone_track_indicator.SetUpTrackIndicator(minMidiNote, midiNoteCount);
+
+        if(!ServiceLocator<SingerManager>.Service.singerIsPlayer.Value)
+        {
+            //((NPCSinger)ServiceLocator<SingerManager>.Service.CurrentSinger).SetUpNPCSinger(songReference.Value.acapella);
+            ((NPCSinger)ServiceLocator<SingerManager>.Service.CurrentSinger).SetUpNPCSinger(songReference.Value.midiPlayback);
+            ((NPCSinger)ServiceLocator<SingerManager>.Service.CurrentSinger).StartNPCSinger();
+        }
+
+        if (playMidiPlayback)
+            midiPlayback.Play();
+
+        instrumental_source.Play();
     }
 
     private void Update()
@@ -118,41 +133,46 @@ public class MidiReader : MonoBehaviour
         UpdateNotes(time);
         UpdateLyrics();
 
-        if(ServiceLocator<MicrophoneManager>.HasService)
-            PitchLogic();
+        if (ServiceLocator<MicrophoneSinger>.HasService)
+            LiveEstimate();
     }
 
-    private void PitchLogic()
+    private void LiveEstimate()
     {
-        AcapellaTimeseriesPoint microphonePoint = ServiceLocator<MicrophoneManager>.Service.EstimatePitch();
-
-        if (currentMiddleNoteMIDINoteObject != null)
-            CompareCurrentNote(microphonePoint);
+        ServiceLocator<MicrophoneSinger>.Service.EstimatePitch();
     }
 
-    private void CompareCurrentNote(AcapellaTimeseriesPoint microphonePoint)
-    {
-        if (microphonePoint.IsSilence) return;
+    //private void PitchLogic()
+    //{
+    //    AcapellaTimeseriesPoint microphonePoint = ServiceLocator<MicrophoneSinger>.Service.EstimatePitch();
 
-        var modResult = microphonePoint.Note % 12;
+    //    if (currentMiddleNoteMIDINoteObject != null)
+    //        CompareCurrentNote(microphonePoint);
+    //}
 
-        if (modResult == currentMiddleNoteMIDINoteObject.midiNote.note.NoteNumber)
-        {
-            //exact hit
-            currentMiddleNoteMIDINoteObject.Hit(true);
-        }
-        else if (modResult >= currentMiddleNoteMIDINoteObject.midiNote.note.NoteNumber - 2 || 
-            modResult <= currentMiddleNoteMIDINoteObject.midiNote.note.NoteNumber + 2)
-        {
-            //almost hit
-            currentMiddleNoteMIDINoteObject.Hit(false);
-        }
-        else
-        {
-            //miss
-            currentMiddleNoteMIDINoteObject.Miss();
-        }
-    }
+    //private void CompareCurrentNote(AcapellaTimeseriesPoint microphonePoint)
+    //{
+    //    if (microphonePoint.IsSilence) return;
+
+    //    var modResult = microphonePoint.Note % 12;
+
+    //    if (modResult == currentMiddleNoteMIDINoteObject.midiNote.note.NoteNumber)
+    //    {
+    //        //exact hit
+    //        currentMiddleNoteMIDINoteObject.Hit(true);
+    //    }
+    //    else if (modResult >= currentMiddleNoteMIDINoteObject.midiNote.note.NoteNumber - 2 || 
+    //        modResult <= currentMiddleNoteMIDINoteObject.midiNote.note.NoteNumber + 2)
+    //    {
+    //        //almost hit
+    //        currentMiddleNoteMIDINoteObject.Hit(false);
+    //    }
+    //    else
+    //    {
+    //        //miss
+    //        currentMiddleNoteMIDINoteObject.Miss();
+    //    }
+    //}
 
     private void GenerateNote(double readaheadTime)
     {

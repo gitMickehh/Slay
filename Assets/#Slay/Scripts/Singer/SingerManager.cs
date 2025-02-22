@@ -8,23 +8,24 @@ public class SingerManager : MonoBehaviour
     public Singer microphoneSinger;
     public Singer npcSinger;
 
-
     public BoolReference singerIsPlayer;
-    private Singer singer;
+    private Singer currentSinger;
+
+    public Singer CurrentSinger => currentSinger;
 
     private void Start()
     {
         if (singerIsPlayer.Value)
         {
-            singer = Instantiate(microphoneSinger, transform);
+            currentSinger = Instantiate(microphoneSinger, transform);
         }
         else
         {
-            singer = Instantiate(npcSinger, transform);
+            currentSinger = Instantiate(npcSinger, transform);
         }
 
-        //ServiceLocator<SingerManager>.Service = this;
-        singer.StartSinger();
+        ServiceLocator<SingerManager>.Service = this;
+        currentSinger.StartSinger();
     }
 
 }

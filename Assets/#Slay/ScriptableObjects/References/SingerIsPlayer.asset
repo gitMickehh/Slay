@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08320e14b50d5984f9c723a233fe2ccb, type: 3}
   m_Name: SingerIsPlayer
   m_EditorClassIdentifier: 
-  Value: 1
+  Value: 0

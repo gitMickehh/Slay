@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f66ed25d67412004bbd8b84bea1095ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  microphoneSinger: {fileID: 6457077198034070001, guid: f3eca8c3255ee8f46ad35ee407a92aed,
+  microphoneSinger: {fileID: 1086158948666880708, guid: f3eca8c3255ee8f46ad35ee407a92aed,
     type: 3}
-  npcSinger: {fileID: 6457077198034070001, guid: f3eca8c3255ee8f46ad35ee407a92aed,
+  npcSinger: {fileID: 7954821836936300044, guid: ae180b57b9a9cab418fd2235d416f900,
     type: 3}
   singerIsPlayer: {fileID: 11400000, guid: 43dc3fced57ae0249bbb7de9d8493eb6, type: 2}

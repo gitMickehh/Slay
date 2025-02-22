@@ -7,10 +7,11 @@ using UnityEngine;
 public class Singer : MonoBehaviour
 {
     public int sampleWindow = 64;
+    private int currentNote;
 
-    [Header("Loudness Settings")]
-    public float loudnessSensibility = 5f;
-    public float threshold = 0.1f;
+    //[Header("Loudness Settings")]
+    //public float loudnessSensibility = 5f;
+    //public float threshold = 0.1f;
 
     [Header("Hearing Back")]
     public AudioSource m_AudioSource;
@@ -22,6 +23,11 @@ public class Singer : MonoBehaviour
     public virtual void StartSinger()
     {
         m_PitchEstimator = new();
+    }
+
+    public virtual float GetLoudness()
+    {
+        return 0;
     }
 
     public float GetLoudnessFromAudioClip(int clipPosition, AudioClip clip)
@@ -56,7 +62,13 @@ public class Singer : MonoBehaviour
             m_AcapellaTimeseriesPoint.Note = PitchEstimator.MidiNoteFromFrequency(estimate);
         }
 
+        currentNote = m_AcapellaTimeseriesPoint.Note;
+
         return m_AcapellaTimeseriesPoint;
     }
 
+    public virtual int GetCurrentNote()
+    {
+        return currentNote;
+    }
 }

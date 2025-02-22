@@ -133,30 +133,39 @@ public class MidiNoteObject : MonoBehaviour, IObjectPooled
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "midpoint")
-        {
-            isAtMidPoint = true;
-            SetSelectedMaterial();
-        }
-        else if (other.tag == "Pool_Reset_Box")
-        {
-            ReturnToPool();
-        }
-
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (!flying)
-        {
-            isAtMidPoint = false;
-            SetNeutralMaterial();
-        }
-        
+        //if (other.tag == "midpoint")
+        //{
+        //    HighlightNote();
+        //}
         if (other.tag == "Pool_Reset_Box")
         {
             ReturnToPool();
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        //if (!flying)
+        //{
+        //    UnHighlightNote();
+        //}
+
+        if (other.tag == "Pool_Reset_Box")
+        {
+            ReturnToPool();
+        }
+    }
+
+    public void HighlightNote()
+    {
+        isAtMidPoint = true;
+        SetSelectedMaterial();
+    }
+
+    public void UnHighlightNote()
+    {
+        isAtMidPoint = false;
+        SetNeutralMaterial();
     }
 
     private void ResetObject()

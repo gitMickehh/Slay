@@ -4,18 +4,22 @@ using System.Collections.Generic;
 using Techno;
 using UnityEngine;
 
-public class MicrophoneManager : Singer
+public class MicrophoneSinger : Singer
 {
     private AudioClip _microphoneClip;
     private string _microphoneName;
-    private int currentNote;
+    //private int currentNote;
     public StringReference MicrophoneName;
+
+    [Header("Loudness Settings")]
+    public float loudnessSensibility = 5f;
+    public float threshold = 0.1f;
 
     private string currentMicrophoneName;
 
     private void Start()
     {
-        ServiceLocator<MicrophoneManager>.Service = this;
+        ServiceLocator<MicrophoneSinger>.Service = this;
         currentMicrophoneName = "";
     }
 
@@ -55,7 +59,7 @@ public class MicrophoneManager : Singer
         m_AudioSource.Play();
     }
 
-    public float GetLoudnessFromMicrophone()
+    public override float GetLoudness()
     {
         var loudness = GetLoudnessFromAudioClip(Microphone.GetPosition(_microphoneName), _microphoneClip) * loudnessSensibility;
         if (loudness < threshold) loudness = 0;
@@ -63,23 +67,25 @@ public class MicrophoneManager : Singer
         return loudness;
     }
 
+    //public float GetLoudnessFromMicrophone()
+    //{
+    //    var loudness = GetLoudnessFromAudioClip(Microphone.GetPosition(_microphoneName), _microphoneClip) * loudnessSensibility;
+    //    if (loudness < threshold) loudness = 0;
+
+    //    return loudness;
+    //}
+
     public override AcapellaTimeseriesPoint EstimatePitch()
     {
-        if (GetLoudnessFromMicrophone() == 0) return new() { IsSilence = true };
+        //if (GetLoudnessFromMicrophone() == 0) return new() { IsSilence = true };
+        if (GetLoudness() == 0) return new() { IsSilence = true };
         var pointReturn = base.EstimatePitch();
-
-        currentNote = pointReturn.Note;
 
         return pointReturn;
     }
 
-    public int GetCurrentNote()
-    {
-        return currentNote;
-    }
-
     private void OnDisable()
     {
-        ServiceLocator<MicrophoneManager>.Reset();
+        ServiceLocator<MicrophoneSinger>.Reset();
     }
 }

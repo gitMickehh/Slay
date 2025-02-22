@@ -9,9 +9,9 @@ public class PitchDetection : MonoBehaviour
 
     private void Update()
     {
-        if(ServiceLocator<MicrophoneManager>.HasService)
+        if(ServiceLocator<MicrophoneSinger>.HasService)
         {
-            ServiceLocator<MicrophoneManager>.Service.EstimatePitch();
+            ServiceLocator<MicrophoneSinger>.Service.EstimatePitch();
         }
     }
 }

@@ -12,9 +12,10 @@ public class ScaleFromMicrophone : MonoBehaviour
 
     private void Update()
     {
-        if (ServiceLocator<MicrophoneManager>.HasService)
+        if (ServiceLocator<MicrophoneSinger>.HasService)
         {
-            var loudness = ServiceLocator<MicrophoneManager>.Service.GetLoudnessFromMicrophone();
+            //var loudness = ServiceLocator<MicrophoneSinger>.Service.GetLoudnessFromMicrophone();
+            var loudness = ServiceLocator<MicrophoneSinger>.Service.GetLoudness();
             transform.localScale = Vector3.Lerp(minScale, maxScale, loudness);
         }
     }

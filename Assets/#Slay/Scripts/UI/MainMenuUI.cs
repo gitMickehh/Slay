@@ -10,6 +10,7 @@ public class MainMenuUI : MonoBehaviour
 {
     public SongReference songReference;
     public StringReference microphoneName;
+    public BoolReference singerIsPlayer;
 
     //[Header("Songs")]
     //public Song britneySong;
@@ -40,6 +41,9 @@ public class MainMenuUI : MonoBehaviour
 
         Button startButton = root.Q<Button>("startButton");
         startButton.clicked += StartNextScene;
+
+        Toggle singerToggle = root.Q<Toggle>("AttackModeToggle");
+        singerToggle.RegisterValueChangedCallback(evt => SingerToggleValueChanged(evt.newValue));
         
         //Button startMidiButton = root.Q<Button>("startMidiButton");
         //startMidiButton.clicked += StartMidiButton;
@@ -89,7 +93,7 @@ public class MainMenuUI : MonoBehaviour
 
     private void SetMicrophoneName(string microphoneDeviceName)
     {
-        ServiceLocator<MicrophoneManager>.Service.RestartMicrophoneSinger();
+        ServiceLocator<MicrophoneSinger>.Service.RestartMicrophoneSinger();
         microphoneName.Value = microphoneDeviceName;
     }
 
@@ -121,7 +125,13 @@ public class MainMenuUI : MonoBehaviour
             microphonesDropDownField.SetEnabled(true);
             microphonesDropDownField.choices = Microphone.devices.ToList<string>();
 
-            microphoneSignalBar.value = GetSignalFloat(ServiceLocator<MicrophoneManager>.Service.GetLoudnessFromMicrophone(), 2.8f);
+            //microphoneSignalBar.value = GetSignalFloat(ServiceLocator<MicrophoneSinger>.Service.GetLoudnessFromMicrophone(), 2.8f);
+            microphoneSignalBar.value = GetSignalFloat(ServiceLocator<MicrophoneSinger>.Service.GetLoudness(), 2.8f);
         }
+    }
+
+    private void SingerToggleValueChanged(bool newValue)
+    {
+        singerIsPlayer.Value = newValue;
     }
 }
