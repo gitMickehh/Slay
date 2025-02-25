@@ -161,7 +161,7 @@ MonoBehaviour:
   on_almost_hit_material: {fileID: 2100000, guid: fe47fe4e552b9944581ac339f600edb8,
     type: 2}
   on_miss_material: {fileID: 2100000, guid: e3d156a952d09de40b79c445b873c0d0, type: 2}
-  lengthMultiplyer: 10
+  lengthMultiplyer: 9
   rbody: {fileID: 1662848154399697926}
   note_collider: {fileID: 1968007932111116138}
   projectileForce: 20

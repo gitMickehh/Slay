@@ -1836,7 +1836,7 @@ MonoBehaviour:
   marker_controller: {fileID: 1195974237}
   notesPool: {fileID: 1001009857}
   noteTime: 1.5
-  unitsPerSecond: 1
+  unitsPerSecond: 0.9
   microphone_track_indicator: {fileID: 1918780560}
   currentMiddleNoteMIDINoteObject: {fileID: 0}
 --- !u!82 &1996834454
