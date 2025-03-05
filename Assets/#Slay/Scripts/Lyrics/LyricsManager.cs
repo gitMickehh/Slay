@@ -61,4 +61,8 @@ public class LyricsManager : MonoBehaviour
         return lyrics.lines[index];
     }
 
+    private void OnDisable()
+    {
+        ServiceLocator<LyricsManager>.Reset();
+    }
 }

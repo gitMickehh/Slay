@@ -11,6 +11,7 @@ public class MainMenuUI : MonoBehaviour
     public SongReference songReference;
     public StringReference microphoneName;
     public BoolReference singerIsPlayer;
+    public FloatReference singerErrorFrequency;
 
     //[Header("Songs")]
     //public Song britneySong;
@@ -45,6 +46,10 @@ public class MainMenuUI : MonoBehaviour
         Toggle singerToggle = root.Q<Toggle>("AttackModeToggle");
         singerToggle.RegisterValueChangedCallback(evt => SingerToggleValueChanged(evt.newValue));
         singerToggle.value = singerIsPlayer.Value;
+
+        Slider singerErrorFrequencySlider = root.Q<Slider>("errFqSlider");
+        singerErrorFrequencySlider.RegisterValueChangedCallback(evt => SingerErrorFrequencyChanged(evt.newValue));
+        singerErrorFrequencySlider.value = singerErrorFrequency.Value;
 
         //Button startMidiButton = root.Q<Button>("startMidiButton");
         //startMidiButton.clicked += StartMidiButton;
@@ -134,5 +139,10 @@ public class MainMenuUI : MonoBehaviour
     private void SingerToggleValueChanged(bool newValue)
     {
         singerIsPlayer.Value = newValue;
+    }
+
+    private void SingerErrorFrequencyChanged(float value)
+    {
+        singerErrorFrequency.Value = value;
     }
 }

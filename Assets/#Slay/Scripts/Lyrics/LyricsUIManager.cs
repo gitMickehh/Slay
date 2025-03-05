@@ -83,4 +83,9 @@ public class LyricsUIManager : MonoBehaviour
         if (currentlyUsedLine == null) return "";
         return lyricsManager.GetNextLine(currentlyUsedLine.index);
     }
+
+    private void OnDisable()
+    {
+        ServiceLocator<LyricsUIManager>.Reset();
+    }
 }

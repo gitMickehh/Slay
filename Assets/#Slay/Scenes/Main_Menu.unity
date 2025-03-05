@@ -184,6 +184,8 @@ MonoBehaviour:
   songReference: {fileID: 11400000, guid: 2bb885b943ee49d418fbfa560260fb2f, type: 2}
   microphoneName: {fileID: 11400000, guid: 8e342e4a248dc47429120c636f945c8b, type: 2}
   singerIsPlayer: {fileID: 11400000, guid: 43dc3fced57ae0249bbb7de9d8493eb6, type: 2}
+  singerErrorFrequency: {fileID: 11400000, guid: f9d0f82effd03e947af66bd64ba5e455,
+    type: 2}
   songs:
   - {fileID: 11400000, guid: 25a538692b8a40a41a4fdfe8ffd8b581, type: 2}
   - {fileID: 11400000, guid: 22b63803b6546094ab771e07e92c25cf, type: 2}

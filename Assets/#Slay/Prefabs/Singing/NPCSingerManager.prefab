@@ -46,11 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sampleWindow: 64
-  loudnessSensibility: 5
-  threshold: 0.005
   m_AudioSource: {fileID: 2435225385059703306}
   m_PitchConfiguration: {fileID: 11400000, guid: 978e11429e8efef42961482c044fdef5,
     type: 2}
+  errorFrequency: {fileID: 11400000, guid: f9d0f82effd03e947af66bd64ba5e455, type: 2}
+  pitchModRange: 0.15
+  errorLength: 0.5
 --- !u!82 &2435225385059703306
 AudioSource:
   m_ObjectHideFlags: 0

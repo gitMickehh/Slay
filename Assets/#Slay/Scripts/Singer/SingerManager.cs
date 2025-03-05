@@ -28,4 +28,8 @@ public class SingerManager : MonoBehaviour
         currentSinger.StartSinger();
     }
 
+    private void OnDisable()
+    {
+        ServiceLocator<SingerManager>.Reset();
+    }
 }
