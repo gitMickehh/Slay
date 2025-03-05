@@ -44,7 +44,8 @@ public class MainMenuUI : MonoBehaviour
 
         Toggle singerToggle = root.Q<Toggle>("AttackModeToggle");
         singerToggle.RegisterValueChangedCallback(evt => SingerToggleValueChanged(evt.newValue));
-        
+        singerToggle.value = singerIsPlayer.Value;
+
         //Button startMidiButton = root.Q<Button>("startMidiButton");
         //startMidiButton.clicked += StartMidiButton;
 
