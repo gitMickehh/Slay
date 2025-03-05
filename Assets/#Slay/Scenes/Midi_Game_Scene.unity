@@ -2169,6 +2169,8 @@ MonoBehaviour:
   songReference: {fileID: 11400000, guid: 2bb885b943ee49d418fbfa560260fb2f, type: 2}
   instrumental_source: {fileID: 1996834454}
   playMidiPlayback: 0
+  currentTrackPosition: {fileID: 11400000, guid: 901c2ccce1c5b8f4d98c195cb0bb0098,
+    type: 2}
   marker_controller: {fileID: 1195974237}
   notesPool: {fileID: 1001009857}
   noteTime: 1.5

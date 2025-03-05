@@ -15,6 +15,7 @@ public class MidiReader : MonoBehaviour
     private MidiFile midiFile;
     public AudioSource instrumental_source;
     public bool playMidiPlayback;
+    public FloatReference currentTrackPosition;
 
     [Header("GameObjects")]
     public MarkerController marker_controller;
@@ -135,6 +136,16 @@ public class MidiReader : MonoBehaviour
 
         if (ServiceLocator<MicrophoneSinger>.HasService)
             LiveEstimate();
+
+        UpdateTrackPosition();
+    }
+
+    private void UpdateTrackPosition()
+    {
+        if (!instrumental_source.isPlaying) return;
+
+        //currentTrackPosition.Value += Time.deltaTime;
+        currentTrackPosition.Value = instrumental_source.time;
     }
 
     private void LiveEstimate()

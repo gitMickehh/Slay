@@ -52,6 +52,8 @@ MonoBehaviour:
   errorFrequency: {fileID: 11400000, guid: f9d0f82effd03e947af66bd64ba5e455, type: 2}
   pitchModRange: 0.15
   errorLength: 0.5
+  currentTrackPosition: {fileID: 11400000, guid: 901c2ccce1c5b8f4d98c195cb0bb0098,
+    type: 2}
 --- !u!82 &2435225385059703306
 AudioSource:
   m_ObjectHideFlags: 0

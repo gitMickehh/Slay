@@ -16,6 +16,9 @@ public class NPCSinger : Singer
     private bool canMakeErrors;
     private bool erroring;
 
+    [Space]
+    public FloatReference currentTrackPosition;
+
     public void SetUpNPCSinger(AudioClip acapella)
     {
         time = 0;
@@ -75,6 +78,10 @@ public class NPCSinger : Singer
     private void ResetPitch()
     {
         m_AudioSource.pitch = 1;
+        m_AudioSource.Stop();
+        //m_AudioSource.PlayDelayed(currentTrackPosition.Value);
+        m_AudioSource.time = currentTrackPosition.Value;
+        m_AudioSource.Play();
     }
 
     public override float GetLoudness()
