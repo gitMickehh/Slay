@@ -156,6 +156,11 @@ public class MidiNoteObject : MonoBehaviour, IObjectPooled
         }
     }
 
+    public void SetOutsideMaterial(Material material)
+    {
+        note_mesh.material = material;
+    }
+
     public void HighlightNote()
     {
         isAtMidPoint = true;
