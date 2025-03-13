@@ -6838,6 +6838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlightedMaterial: {fileID: 2100000, guid: b80eee26680c802478269019e26eea30, type: 2}
+  gameState: {fileID: 11400000, guid: 86e7b76e5e7eb004f8bc779e7a2abb31, type: 2}
   currentHighlightedNotes: []
 --- !u!1 &1544105454
 GameObject:

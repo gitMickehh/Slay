@@ -111,7 +111,8 @@ public class MidiReader : MonoBehaviour
 
         microphone_track_indicator.SetUpTrackIndicator(minMidiNote, midiNoteCount);
 
-        if(!ServiceLocator<SingerManager>.Service.singerIsPlayer.Value)
+        //if(!ServiceLocator<SingerManager>.Service.singerIsPlayer.Value)
+        if(!ServiceLocator<SingerManager>.Service.gameStateScriptableObject.attackerIsPlayer)
         {
             //((NPCSinger)ServiceLocator<SingerManager>.Service.CurrentSinger).SetUpNPCSinger(songReference.Value.acapella);
             ((NPCSinger)ServiceLocator<SingerManager>.Service.CurrentSinger).SetUpNPCSinger(songReference.Value.midiPlayback);

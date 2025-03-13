@@ -6,12 +6,20 @@ using UnityEngine;
 public class DefenseInputWall : MonoBehaviour
 {
     public Material highlightedMaterial;
+    public GameStateScriptableObject gameState;
 
     public List<DefenseNoteObject> currentHighlightedNotes;
+
+
+    //npc defender
+    float time;
+    float npcPlayWellInterval;
 
     private void Start()
     {
         currentHighlightedNotes = new List<DefenseNoteObject>();
+        time = 0;
+        npcPlayWellInterval = GetARandomInterval();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,12 +48,15 @@ public class DefenseInputWall : MonoBehaviour
 
     private void Update()
     {
-        CheckInputs();
+        if (gameState.defenderIsPlayer)
+            CheckInputs();
+        else
+            NPCInputs();
     }
 
     private void CheckInputs()
     {
-        for (int i = currentHighlightedNotes.Count-1; i >= 0 ; i--)
+        for (int i = currentHighlightedNotes.Count - 1; i >= 0; i--)
         {
             if (Input.GetKey(currentHighlightedNotes[i].keyCode))
             {
@@ -53,5 +64,41 @@ public class DefenseInputWall : MonoBehaviour
                 currentHighlightedNotes.RemoveAt(i);
             }
         }
+    }
+
+    private void DefendCurrentNotes()
+    {
+        for (int i = currentHighlightedNotes.Count - 1; i >= 0; i--)
+        {
+            currentHighlightedNotes[i].ReturnToPool();
+            currentHighlightedNotes.RemoveAt(i);
+        }
+    }
+
+    private void NPCInputs()
+    {
+        if (gameState.defenderPerfectionLevel >= 1.0f)
+        {
+            DefendCurrentNotes();
+        }
+        else
+        {
+            //set a timer to hit the right notes
+            time += Time.deltaTime;
+            if(time >= npcPlayWellInterval)
+            {
+                time = 0;
+                npcPlayWellInterval = GetARandomInterval();
+                DefendCurrentNotes();
+            }
+        }
+    }
+
+    private float GetARandomInterval()
+    {
+        var r = Random.Range(0.0f, gameState.defenderPerfectionLevel);
+        r = (1.0f - r) * 2.0f;
+
+        return r;
     }
 }

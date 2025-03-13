@@ -8,14 +8,16 @@ public class SingerManager : MonoBehaviour
     public Singer microphoneSinger;
     public Singer npcSinger;
 
-    public BoolReference singerIsPlayer;
+    //public BoolReference singerIsPlayer;
+    public GameStateScriptableObject gameStateScriptableObject;
     private Singer currentSinger;
 
     public Singer CurrentSinger => currentSinger;
 
     private void Start()
     {
-        if (singerIsPlayer.Value)
+        //if (singerIsPlayer.Value)
+        if (gameStateScriptableObject.attackerIsPlayer)
         {
             currentSinger = Instantiate(microphoneSinger, transform);
         }

@@ -10,8 +10,9 @@ public class MainMenuUI : MonoBehaviour
 {
     public SongReference songReference;
     public StringReference microphoneName;
-    public BoolReference singerIsPlayer;
-    public FloatReference singerErrorFrequency;
+    //public BoolReference singerIsPlayer;
+    //public FloatReference singerErrorFrequency;
+    public GameStateScriptableObject gameStateScriptableObject;
 
     //[Header("Songs")]
     //public Song britneySong;
@@ -45,11 +46,21 @@ public class MainMenuUI : MonoBehaviour
 
         Toggle singerToggle = root.Q<Toggle>("AttackModeToggle");
         singerToggle.RegisterValueChangedCallback(evt => SingerToggleValueChanged(evt.newValue));
-        singerToggle.value = singerIsPlayer.Value;
+        //singerToggle.value = singerIsPlayer.Value;
+        singerToggle.value = gameStateScriptableObject.attackerIsPlayer;
 
         Slider singerErrorFrequencySlider = root.Q<Slider>("errFqSlider");
         singerErrorFrequencySlider.RegisterValueChangedCallback(evt => SingerErrorFrequencyChanged(evt.newValue));
-        singerErrorFrequencySlider.value = singerErrorFrequency.Value;
+        //singerErrorFrequencySlider.value = singerErrorFrequency.Value;
+        singerErrorFrequencySlider.value = gameStateScriptableObject.NPCSingerErrorFq;
+
+        Toggle defenderModeToggle = root.Q<Toggle>("DefenderModeToggle");
+        defenderModeToggle.RegisterValueChangedCallback(evt => DefenderToggleValueChanged(evt.newValue));
+        defenderModeToggle.value = gameStateScriptableObject.defenderIsPlayer;
+
+        Slider defenderPerfectionSlider = root.Q<Slider>("defenderPerfection");
+        defenderPerfectionSlider.RegisterValueChangedCallback(evt => DefenderPerfectionValueChanged(evt.newValue));
+        defenderPerfectionSlider.value = gameStateScriptableObject.defenderPerfectionLevel;
 
         //Button startMidiButton = root.Q<Button>("startMidiButton");
         //startMidiButton.clicked += StartMidiButton;
@@ -138,11 +149,26 @@ public class MainMenuUI : MonoBehaviour
 
     private void SingerToggleValueChanged(bool newValue)
     {
-        singerIsPlayer.Value = newValue;
+        //singerIsPlayer.Value = newValue;
+        gameStateScriptableObject.attackerIsPlayer = newValue;
+    }
+
+    private void DefenderToggleValueChanged(bool newValue)
+    {
+        //singerIsPlayer.Value = newValue;
+        gameStateScriptableObject.defenderIsPlayer = newValue;
     }
 
     private void SingerErrorFrequencyChanged(float value)
     {
-        singerErrorFrequency.Value = value;
+        //singerErrorFrequency.Value = value;
+        gameStateScriptableObject.NPCSingerErrorFq = value;
     }
+
+    private void DefenderPerfectionValueChanged(float value)
+    {
+        //singerErrorFrequency.Value = value;
+        gameStateScriptableObject.defenderPerfectionLevel = value;
+    }
+
 }

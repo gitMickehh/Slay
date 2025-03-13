@@ -3,9 +3,11 @@
     <ui:VisualElement style="flex-grow: 1; align-self: stretch; justify-content: space-around; font-size: 25px; color: rgb(137, 38, 132);">
         <ui:VisualElement name="Container" style="flex-grow: 1; align-self: stretch; justify-content: space-around; align-items: center;">
             <ui:DropdownField label="Song" choices="Pink Pony Club,Oops I Did it Again" name="SongChoice" index="0" style="min-width: 600px; font-size: 25px;" />
-            <ui:VisualElement name="GameModeContainer" style="flex-grow: 1; width: auto; max-height: 150px; min-width: 700px; align-items: center; justify-content: center;">
-                <ui:Toggle label="Attacker/Singer" value="true" name="AttackModeToggle" style="min-width: 300px; justify-content: space-between; align-items: center; align-self: auto;" />
+            <ui:VisualElement name="GameModeContainer" style="flex-grow: 1; width: auto; max-height: 300px; min-width: 700px; align-items: center; justify-content: space-between;">
+                <ui:Toggle label="Attacker Player" value="true" name="AttackModeToggle" style="min-width: 300px; justify-content: space-between; align-items: center; align-self: auto;" />
                 <ui:Slider label="Singer Error Frequency" value="0" high-value="5" name="errFqSlider" focusable="true" style="width: 100%;" />
+                <ui:Toggle label="Defender Player" value="true" name="DefenderModeToggle" style="min-width: 300px; justify-content: space-between; align-items: center; align-self: auto;" />
+                <ui:Slider label="Defender AI Perfection" value="0" high-value="1" name="defenderPerfection" focusable="true" style="width: 100%;" />
             </ui:VisualElement>
             <ui:VisualElement name="SoundContainer" style="flex-grow: 1; max-height: 200px; min-width: 800px; justify-content: space-around;">
                 <ui:ProgressBar value="22" title="Signal" name="audioSignal" class="signal" style="min-width: auto;" />

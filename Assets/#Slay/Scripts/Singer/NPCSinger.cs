@@ -7,7 +7,8 @@ public class NPCSinger : Singer
     private AudioClip acapellaClip;
 
     //public float errorFrequency = 0.0f;
-    public FloatReference errorFrequency;
+    //public FloatReference errorFrequency;
+    public GameStateScriptableObject gameStateScriptableObject;
     public float pitchModRange = 0.15f;
     public float errorLength = 0.5f;
 
@@ -23,7 +24,8 @@ public class NPCSinger : Singer
     {
         time = 0;
         //canMakeErrors = (errorFrequency != 0.0f);
-        canMakeErrors = (errorFrequency.Value != 0.0f);
+        //canMakeErrors = (errorFrequency.Value != 0.0f);
+        canMakeErrors = (gameStateScriptableObject.NPCSingerErrorFq != 0.0f);
         SetRandomErrorTime();
 
         acapellaClip = acapella;
@@ -67,7 +69,8 @@ public class NPCSinger : Singer
     private void SetRandomErrorTime()
     {
         //timeBetweenErrors = Random.Range(errorLength, errorLength + errorFrequency);
-        timeBetweenErrors = Random.Range(errorLength, errorLength + errorFrequency.Value);
+        //timeBetweenErrors = Random.Range(errorLength, errorLength + errorFrequency.Value);
+        timeBetweenErrors = Random.Range(errorLength, errorLength + gameStateScriptableObject.NPCSingerErrorFq);
     }
 
     private void AddPitch(float pitchModifier)

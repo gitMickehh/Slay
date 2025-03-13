@@ -48,4 +48,5 @@ MonoBehaviour:
     type: 3}
   npcSinger: {fileID: 7954821836936300044, guid: ae180b57b9a9cab418fd2235d416f900,
     type: 3}
-  singerIsPlayer: {fileID: 11400000, guid: 43dc3fced57ae0249bbb7de9d8493eb6, type: 2}
+  gameStateScriptableObject: {fileID: 11400000, guid: 86e7b76e5e7eb004f8bc779e7a2abb31,
+    type: 2}
