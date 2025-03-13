@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerModeHandler : MonoBehaviour
 {
     public Camera mainCamera;
+
     public BoolReference playerIsSinger;
     public Transform singerCameraTransform;
     public Transform defenderCameraTransform;
@@ -34,5 +35,7 @@ public class PlayerModeHandler : MonoBehaviour
         mainCamera.transform.SetParent(playerIsSinger.Value ? singerCameraTransform : defenderCameraTransform);
         mainCamera.transform.localPosition = Vector3.zero;
         mainCamera.transform.localRotation = Quaternion.identity;
+
+        mainCamera.GetComponent<ShakeBehaviour>().SetNewOriginalPosition();
     }
 }

@@ -13,6 +13,7 @@ public class DefenseInputWall : MonoBehaviour
     [Header("Health")]
     public float healthRate = 1;
     public FloatReference defenderHealth;
+    public GameEvent ShakeCameraEvent;
 
     //npc defender
     float time;
@@ -109,5 +110,6 @@ public class DefenseInputWall : MonoBehaviour
     private void HurtDefender()
     {
         defenderHealth.SetValueWithAlert(defenderHealth.Value - healthRate);
+        ShakeCameraEvent.Raise();
     }
 }
