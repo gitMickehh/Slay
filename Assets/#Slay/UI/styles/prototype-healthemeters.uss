@@ -1,0 +1,21 @@
+.unity-progress-bar__progress {
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgb(180, 88, 83);
+}
+
+.unity-progress-bar__background {
+    background-color: rgb(38, 38, 38);
+}
+
+.healthbar-title {
+    -unity-font-style: bold;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(204, 204, 204);
+    font-size: 16px;
+    -unity-text-align: middle-center;
+}
+
+.unity-progress-bar__title {
+    -unity-font-style: bold;
+    font-size: 16px;
+}

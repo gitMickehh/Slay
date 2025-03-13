@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MidiNote_correct 4
+  m_Name: Defense_note_correct 2
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -116,9 +116,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.7759977, g: 1, b: 0.02352941, a: 1}
-    - _Color: {r: 0.77599776, g: 1, b: 0.02352941, a: 1}
-    - _EmissionColor: {r: 0.5647117, g: 1, b: 0.0018211621, a: 1}
+    - _BaseColor: {r: 0.043137226, g: 0.23454995, b: 0.98039216, a: 1}
+    - _Color: {r: 0.0431372, g: 0.23454991, b: 0.98039216, a: 1}
+    - _EmissionColor: {r: 0.0033465356, g: 0.045186214, b: 0.9559735, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

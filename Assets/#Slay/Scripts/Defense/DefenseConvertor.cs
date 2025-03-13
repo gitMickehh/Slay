@@ -8,6 +8,7 @@ public class TransformMaterial
 {
     public Transform transform;
     public Material material;
+    public KeyCode keyCode;
 }
 
 public class DefenseConvertor : MonoBehaviour
@@ -15,34 +16,38 @@ public class DefenseConvertor : MonoBehaviour
     //public List<Transform> possibleSpawnPositions;
     public List<TransformMaterial> possibleSpawnPositions;
     private int randomIndex;
+    //public GameObject DefenderNote;
+    public GameObjectPool defenderNotePool;
 
     private void Start()
     {
         randomIndex = -1;
     }
 
-    private TransformMaterial GetRandomPosition(int lastRandomIndex)
+    private TransformMaterial GetRandomPosition()
     {
         //List<Transform> newPossibleSpawnPositions = possibleSpawnPositions;
         List<TransformMaterial> newPossibleSpawnPositions = possibleSpawnPositions;
 
-        if (lastRandomIndex != -1)
-            newPossibleSpawnPositions = possibleSpawnPositions.ToList().Where(p => p.transform.position != possibleSpawnPositions[lastRandomIndex].transform.position).ToList();
+        if (randomIndex != -1)
+            newPossibleSpawnPositions = possibleSpawnPositions.ToList().Where(p => p.transform.position != possibleSpawnPositions[randomIndex].transform.position).ToList();
             //newPossibleSpawnPositions = possibleSpawnPositions.ToList().Where(p => p.position != possibleSpawnPositions[lastRandomIndex].position).ToList();
 
         randomIndex = Random.Range(0,newPossibleSpawnPositions.Count);
         return newPossibleSpawnPositions[randomIndex];
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void GenerateDefenseNote(Vector3 velocity)
     {
-        Debug.Log(other.name + " has entered!");
-        if (other.tag == "singing_note")
-        {
-            var transformMaterial = GetRandomPosition(randomIndex);
-            other.transform.parent.position = transformMaterial.transform.position;
-            other.GetComponentInParent<MidiNoteObject>().SetOutsideMaterial(transformMaterial.material);
-        }
+        var transformMaterial = GetRandomPosition();
+        DefenseNoteObject newDefenseNote = defenderNotePool.Get().GetComponent<DefenseNoteObject>();
+
+        newDefenseNote.transform.position = transformMaterial.transform.position;
+        newDefenseNote.SetVelocity(velocity);
+        newDefenseNote.SetMaterial(transformMaterial.material);
+        newDefenseNote.SetKeyCode(transformMaterial.keyCode);
     }
+
+
 
 }
