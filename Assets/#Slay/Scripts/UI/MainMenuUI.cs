@@ -10,18 +10,9 @@ public class MainMenuUI : MonoBehaviour
 {
     public SongReference songReference;
     public StringReference microphoneName;
-    //public BoolReference singerIsPlayer;
-    //public FloatReference singerErrorFrequency;
     public GameStateScriptableObject gameStateScriptableObject;
 
-    //[Header("Songs")]
-    //public Song britneySong;
-    //public Song charlieSong;
-    //public Song MileySong;
-    //public Song PPCSong;
-
     public List<Song> songs;
-    //public Song MIDI_Britney;
 
     DropdownField microphonesDropDownField;
     ProgressBar microphoneSignalBar;

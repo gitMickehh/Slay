@@ -10,6 +10,9 @@ public class DefenseInputWall : MonoBehaviour
 
     public List<DefenseNoteObject> currentHighlightedNotes;
 
+    [Header("Health")]
+    public float healthRate = 1;
+    public FloatReference defenderHealth;
 
     //npc defender
     float time;
@@ -41,7 +44,8 @@ public class DefenseInputWall : MonoBehaviour
         if (other.tag == "defense-note")
         {
             //hurt defender
-            Debug.Log("hurt defense!");
+            //Debug.Log("hurt defense!");
+            HurtDefender();
             currentHighlightedNotes.Remove(other.GetComponentInParent<DefenseNoteObject>());
         }
     }
@@ -81,7 +85,7 @@ public class DefenseInputWall : MonoBehaviour
         {
             DefendCurrentNotes();
         }
-        else
+        else if(gameState.defenderPerfectionLevel > 0.0f)
         {
             //set a timer to hit the right notes
             time += Time.deltaTime;
@@ -100,5 +104,10 @@ public class DefenseInputWall : MonoBehaviour
         r = (1.0f - r) * 2.0f;
 
         return r;
+    }
+
+    private void HurtDefender()
+    {
+        defenderHealth.SetValueWithAlert(defenderHealth.Value - healthRate);
     }
 }

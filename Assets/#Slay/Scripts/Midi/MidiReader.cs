@@ -39,6 +39,10 @@ public class MidiReader : MonoBehaviour
     [SerializeField]
     private MidiNoteObject currentMiddleNoteMIDINoteObject;
 
+    [Header("Player Health Setup")]
+    public FloatReference attackerHealth;
+    public FloatReference defenderHealth;
+
     private void OnEnable()
     {
         timestamped_notes = new List<MidiNoteTimeStamped>();
@@ -47,6 +51,7 @@ public class MidiReader : MonoBehaviour
 
         ReadMidiFile();
         GetDataFromMidi();
+        SetupHealthPoints();
     }
 
     private void Start()
@@ -66,6 +71,12 @@ public class MidiReader : MonoBehaviour
         ICollection<Note> notes = midiFile.GetNotes();
         notes_array = new Note[notes.Count];
         notes.CopyTo(notes_array, 0);
+    }
+
+    private void SetupHealthPoints()
+    {
+        attackerHealth.SetValueWithAlert(notes_array.Length);
+        defenderHealth.SetValueWithAlert(notes_array.Length);
     }
 
     private void ProcessNoteData()

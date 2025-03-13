@@ -2787,6 +2787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 537592960}
   - component: {fileID: 537592959}
+  - component: {fileID: 537592961}
   m_Layer: 0
   m_Name: HealthUI
   m_TagString: Untagged
@@ -2826,6 +2827,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &537592961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537592958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e00e88f11b5a95c43a549b897be5383b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackerHealth: {fileID: 11400000, guid: e5e7c6d4cf034df42a9d015a3a91958c, type: 2}
+  defenderHealth: {fileID: 11400000, guid: 2084232a880717740ac878b8b651c990, type: 2}
 --- !u!1 &569234575
 GameObject:
   m_ObjectHideFlags: 0
@@ -6840,6 +6855,8 @@ MonoBehaviour:
   highlightedMaterial: {fileID: 2100000, guid: b80eee26680c802478269019e26eea30, type: 2}
   gameState: {fileID: 11400000, guid: 86e7b76e5e7eb004f8bc779e7a2abb31, type: 2}
   currentHighlightedNotes: []
+  healthRate: 1
+  defenderHealth: {fileID: 11400000, guid: 2084232a880717740ac878b8b651c990, type: 2}
 --- !u!1 &1544105454
 GameObject:
   m_ObjectHideFlags: 0
@@ -8767,6 +8784,8 @@ MonoBehaviour:
   unitsPerSecond: 0.9
   microphone_track_indicator: {fileID: 1918780560}
   currentMiddleNoteMIDINoteObject: {fileID: 0}
+  attackerHealth: {fileID: 11400000, guid: e5e7c6d4cf034df42a9d015a3a91958c, type: 2}
+  defenderHealth: {fileID: 11400000, guid: 2084232a880717740ac878b8b651c990, type: 2}
 --- !u!82 &1996834454
 AudioSource:
   m_ObjectHideFlags: 0
