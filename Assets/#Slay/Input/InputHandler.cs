@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Techno;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -38,19 +39,9 @@ public class InputHandler : MonoBehaviour
     public bool BackTriggered { get => backAction.WasPressedThisFrame(); }
     public bool SwitchCameraTrigger { get => switchAction.WasPressedThisFrame(); }
 
-    public static InputHandler Instance { get; private set; }
-
     private void Awake()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        ServiceLocator<InputHandler>.Service = this;
 
         topRightAction = controlsAsset.FindActionMap(defenderActionMapName).FindAction(topRight);
         topLeftAction = controlsAsset.FindActionMap(defenderActionMapName).FindAction(topLeft);
@@ -78,6 +69,8 @@ public class InputHandler : MonoBehaviour
 
     private void OnDisable()
     {
+        ServiceLocator<InputHandler>.Reset();
+
         topRightAction.Disable();
         topLeftAction.Disable();
         botRightAction.Disable();

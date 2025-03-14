@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Techno;
 using UnityEngine;
 
 public class PlayerModeHandler : MonoBehaviour
@@ -24,7 +25,8 @@ public class PlayerModeHandler : MonoBehaviour
     private void Update()
     {
         //if(Input.GetKeyDown(KeyCode.S))
-        if(InputHandler.Instance.SwitchCameraTrigger)
+        //if(InputHandler.Instance.SwitchCameraTrigger)
+        if(ServiceLocator<InputHandler>.Service.SwitchCameraTrigger)
         {
             playerIsSinger.Value = !playerIsSinger.Value;
             UpdateCameraPosition();

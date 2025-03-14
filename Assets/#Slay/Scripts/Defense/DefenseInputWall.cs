@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Techno;
 using UnityEngine;
 
 public class DefenseInputWall : MonoBehaviour
@@ -63,7 +64,8 @@ public class DefenseInputWall : MonoBehaviour
         for (int i = currentHighlightedNotes.Count - 1; i >= 0; i--)
         {
             //if (Input.GetKey(currentHighlightedNotes[i].keyCode))
-            if (InputHandler.Instance.ListenToDefenderAction(currentHighlightedNotes[i].actionName))
+            //if (InputHandler.Instance.ListenToDefenderAction(currentHighlightedNotes[i].actionName))
+            if (ServiceLocator<InputHandler>.Service.ListenToDefenderAction(currentHighlightedNotes[i].actionName))
             {
                 currentHighlightedNotes[i].ReturnToPool();
                 currentHighlightedNotes.RemoveAt(i);

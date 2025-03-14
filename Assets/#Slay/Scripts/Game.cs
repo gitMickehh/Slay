@@ -1,3 +1,4 @@
+using Techno;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +12,8 @@ namespace Slay
         private void Update()
         {
             //if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Escape))
-            if (InputHandler.Instance.BackTriggered)
+            //if (InputHandler.Instance.BackTriggered)
+            if (ServiceLocator<InputHandler>.Service.BackTriggered)
             {
                 if (backIsQuit)
                     Application.Quit();
