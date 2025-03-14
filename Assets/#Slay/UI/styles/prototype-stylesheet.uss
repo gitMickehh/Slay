@@ -4,7 +4,7 @@
     justify-content: space-between;
     align-self: center;
     width: 30%;
-    background-color: rgb(248, 198, 69);
+    background-color: rgb(255, 255, 255);
     border-left-color: rgb(177, 43, 185);
     border-right-color: rgb(177, 43, 185);
     border-top-color: rgb(177, 43, 185);
@@ -54,4 +54,8 @@
 
 .signal .unity-progress-bar__progress {
     background-color: rgb(37, 255, 0);
+}
+
+.unity-base-field__input {
+    color: rgb(0, 0, 0);
 }
