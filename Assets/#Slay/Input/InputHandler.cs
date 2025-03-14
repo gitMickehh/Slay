@@ -19,6 +19,7 @@ public class InputHandler : MonoBehaviour
     [SerializeField] private string botLeft = "BotLeft";
     
     [SerializeField] private string back = "Back";
+    [SerializeField] private string switchName = "Switch";
 
 
     private InputAction topRightAction;
@@ -27,13 +28,15 @@ public class InputHandler : MonoBehaviour
     private InputAction botLeftAction;
 
     private InputAction backAction;
+    private InputAction switchAction;
 
 
-    public bool TopRightTriggered { get; private set; }
-    public bool TopLeftTriggered { get; private set; }
-    public bool BotRightTriggered { get; private set; }
-    public bool BotLeftTriggered { get; private set; }
-    public bool BackTriggered { get; private set; }
+    public bool TopRightTriggered { get => topRightAction.WasPressedThisFrame(); }
+    public bool TopLeftTriggered { get => topLeftAction.WasPressedThisFrame(); }
+    public bool BotRightTriggered { get => botRightAction.WasPressedThisFrame(); }
+    public bool BotLeftTriggered { get => botLeftAction.WasPressedThisFrame(); }
+    public bool BackTriggered { get => backAction.WasPressedThisFrame(); }
+    public bool SwitchCameraTrigger { get => switchAction.WasPressedThisFrame(); }
 
     public static InputHandler Instance { get; private set; }
 
@@ -55,30 +58,12 @@ public class InputHandler : MonoBehaviour
         botLeftAction = controlsAsset.FindActionMap(defenderActionMapName).FindAction(botLeft);
 
         backAction = controlsAsset.FindActionMap(controlActionMapName).FindAction(back);
-        RegisterInputActions();
+        switchAction = controlsAsset.FindActionMap(controlActionMapName).FindAction(switchName);
     }
 
     public bool ListenToDefenderAction(string actionName)
     {
         return controlsAsset.FindActionMap(defenderActionMapName).FindAction(actionName).IsPressed();
-    }
-
-    void RegisterInputActions()
-    {
-        topRightAction.performed += context => TopRightTriggered = true;
-        topRightAction.canceled += context => TopRightTriggered = false;
-
-        topLeftAction.performed += context => TopLeftTriggered = true;
-        topLeftAction.canceled += context => TopLeftTriggered = false;
-
-        botRightAction.performed += context => BotRightTriggered = true;
-        botRightAction.canceled += context => BotRightTriggered = false;
-
-        botLeftAction.performed += context => BotLeftTriggered = true;
-        botLeftAction.canceled += context => BotLeftTriggered = false;
-
-        backAction.performed += context => BackTriggered = true;
-        backAction.canceled += context => BackTriggered = false;
     }
 
     private void OnEnable()
@@ -88,6 +73,7 @@ public class InputHandler : MonoBehaviour
         botRightAction.Enable();
         botLeftAction.Enable();
         backAction.Enable();
+        switchAction.Enable();
     }
 
     private void OnDisable()
@@ -97,6 +83,7 @@ public class InputHandler : MonoBehaviour
         botRightAction.Disable();
         botLeftAction.Disable();
         backAction.Disable();
+        switchAction.Disable();
     }
 
 }

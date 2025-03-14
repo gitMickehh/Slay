@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08bac56d89f00d749bdecf841da939ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  escIsQuit: 1
+  backIsQuit: 1
 --- !u!4 &1262402417
 Transform:
   m_ObjectHideFlags: 0
