@@ -8,7 +8,9 @@ public class TransformMaterial
 {
     public Transform transform;
     public Material material;
-    public KeyCode keyCode;
+    //public KeyCode keyCode;
+    public string actionName;
+    public string titleName;
 }
 
 public class DefenseConvertor : MonoBehaviour
@@ -45,7 +47,8 @@ public class DefenseConvertor : MonoBehaviour
         newDefenseNote.transform.position = transformMaterial.transform.position;
         newDefenseNote.SetVelocity(velocity);
         newDefenseNote.SetMaterial(transformMaterial.material);
-        newDefenseNote.SetKeyCode(transformMaterial.keyCode);
+        //newDefenseNote.SetKeyCode(transformMaterial.keyCode);
+        newDefenseNote.SetActionName(transformMaterial.actionName, transformMaterial.titleName);
     }
 
 

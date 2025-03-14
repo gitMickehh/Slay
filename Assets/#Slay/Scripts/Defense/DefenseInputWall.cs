@@ -63,7 +63,8 @@ public class DefenseInputWall : MonoBehaviour
     {
         for (int i = currentHighlightedNotes.Count - 1; i >= 0; i--)
         {
-            if (Input.GetKey(currentHighlightedNotes[i].keyCode))
+            //if (Input.GetKey(currentHighlightedNotes[i].keyCode))
+            if (InputHandler.Instance.ListenToDefenderAction(currentHighlightedNotes[i].actionName))
             {
                 currentHighlightedNotes[i].ReturnToPool();
                 currentHighlightedNotes.RemoveAt(i);

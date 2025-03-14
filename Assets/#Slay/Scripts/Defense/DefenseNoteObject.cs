@@ -9,7 +9,8 @@ public class DefenseNoteObject : MonoBehaviour, IObjectPooled
 
     public MeshRenderer noteModel;
     public Rigidbody rbody;
-    public KeyCode keyCode;
+    //public KeyCode keyCode;
+    public string actionName;
     public TextMeshProUGUI keyCodeText;
 
     public void SetVelocity(Vector3 velocity)
@@ -22,10 +23,16 @@ public class DefenseNoteObject : MonoBehaviour, IObjectPooled
         noteModel.material = material;
     }
 
-    public void SetKeyCode(KeyCode newKeyCode)
+    //public void SetKeyCode(KeyCode newKeyCode)
+    //{
+    //    keyCode = newKeyCode;
+    //    keyCodeText.text = newKeyCode.ToString();
+    //}
+
+    public void SetActionName(string newActionName, string titleName)
     {
-        keyCode = newKeyCode;
-        keyCodeText.text = newKeyCode.ToString();
+        actionName = newActionName;
+        keyCodeText.text = titleName;
     }
 
     public void ReturnToPool()

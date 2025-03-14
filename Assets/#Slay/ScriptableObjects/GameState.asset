@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackerIsPlayer: 0
   NPCSingerErrorFq: 0.32
-  defenderIsPlayer: 0
+  defenderIsPlayer: 1
   defenderPerfectionLevel: 0.506
