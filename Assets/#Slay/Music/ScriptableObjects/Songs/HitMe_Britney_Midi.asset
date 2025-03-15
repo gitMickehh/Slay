@@ -19,3 +19,8 @@ MonoBehaviour:
   midiFileName: HitMe_Britney_MIDI_93BPM
   midiPlayback: {fileID: 8300000, guid: 1a8c4b042948e6049a4f6c2f46a69d69, type: 3}
   lyricsFile: {fileID: 4900000, guid: 98ababffbf3c62c4b9057ff9c69f5a00, type: 3}
+  breaktimes:
+  - 42.4
+  - 63.23
+  - 94.15
+  - 120.65

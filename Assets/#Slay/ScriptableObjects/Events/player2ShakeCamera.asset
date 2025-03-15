@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4820e7e83854334b81e2142967a83aa, type: 3}
-  m_Name: GameState
+  m_Script: {fileID: 11500000, guid: 2a5531b0c9943344d90c3bc8c6229768, type: 3}
+  m_Name: player2ShakeCamera
   m_EditorClassIdentifier: 
-  attackerIsPlayer: 0
-  NPCSingerErrorFq: 0
-  defenderIsPlayer: 0
-  defenderPerfectionLevel: 1
-  currentSong: {fileID: 11400000, guid: 2bb885b943ee49d418fbfa560260fb2f, type: 2}
-  switchedRoles: 1
+  listeners: []

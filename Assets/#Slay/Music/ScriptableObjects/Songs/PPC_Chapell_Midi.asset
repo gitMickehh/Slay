@@ -19,3 +19,9 @@ MonoBehaviour:
   midiFileName: PPC_Chapell_MIDI
   midiPlayback: {fileID: 8300000, guid: 15d97f649208b314591181e43ea50215, type: 3}
   lyricsFile: {fileID: 4900000, guid: 8062c07050ce56e4c89562f9c2491025, type: 3}
+  breaktimes:
+  - 65.79
+  - 84.33
+  - 121.05
+  - 165.98
+  - 202.85

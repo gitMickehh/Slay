@@ -19,5 +19,8 @@ public class Song : ScriptableObject
     [Header("Lyrics")]
     public TextAsset lyricsFile;
 
+    [Header("Breaks")]
+    public List<float> breaktimes;
+
     public string SongPath => Application.streamingAssetsPath + "/" + codename +".json";
 }

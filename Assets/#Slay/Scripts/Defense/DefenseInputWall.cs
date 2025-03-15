@@ -12,8 +12,12 @@ public class DefenseInputWall : MonoBehaviour
 
     [Header("Health")]
     public float healthRate = 1;
-    public FloatReference defenderHealth;
-    public GameEvent ShakeCameraEvent;
+    public FloatReference player1Health;
+    public FloatReference player2Health;
+    
+    [Header("Camera Shake")]
+    public GameEvent ShakePlayer1CameraEvent;
+    public GameEvent ShakePlayer2CameraEvent;
 
     //npc defender
     float time;
@@ -111,7 +115,16 @@ public class DefenseInputWall : MonoBehaviour
 
     private void HurtDefender()
     {
-        defenderHealth.SetValueWithAlert(defenderHealth.Value - healthRate);
-        ShakeCameraEvent.Raise();
+
+        if(!gameState.switchedRoles)
+        {
+            player2Health.SetValueWithAlert(player2Health.Value - healthRate);
+            ShakePlayer2CameraEvent.Raise();
+        }
+        else
+        {
+            player1Health.SetValueWithAlert(player1Health.Value - healthRate);
+            ShakePlayer1CameraEvent.Raise();
+        }
     }
 }
