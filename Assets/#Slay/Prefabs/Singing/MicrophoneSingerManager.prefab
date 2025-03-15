@@ -46,12 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sampleWindow: 64
-  loudnessSensibility: 5
-  threshold: 0.05
   m_AudioSource: {fileID: 2435225385059703306}
   m_PitchConfiguration: {fileID: 11400000, guid: 978e11429e8efef42961482c044fdef5,
     type: 2}
   MicrophoneName: {fileID: 11400000, guid: 8e342e4a248dc47429120c636f945c8b, type: 2}
+  loudnessSensibility: 5
+  threshold: 0.05
 --- !u!82 &2435225385059703306
 AudioSource:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
