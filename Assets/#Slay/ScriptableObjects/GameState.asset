@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackerIsPlayer: 0
   NPCSingerErrorFq: 0
-  defenderIsPlayer: 0
+  defenderIsPlayer: 1
   defenderPerfectionLevel: 1
+  player1Health: {fileID: 11400000, guid: e5e7c6d4cf034df42a9d015a3a91958c, type: 2}
+  player2Health: {fileID: 11400000, guid: 2084232a880717740ac878b8b651c990, type: 2}
   currentSong: {fileID: 11400000, guid: 2bb885b943ee49d418fbfa560260fb2f, type: 2}
-  switchedRoles: 1
+  switchedRoles: 0

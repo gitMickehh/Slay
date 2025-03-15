@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/%23Slay/UI/styles/prototype-stylesheet.uss?fileID=7433441132597879392&amp;guid=36634c5c9ed55144d81e614b2c266352&amp;type=3#prototype-stylesheet" />
+    <ui:VisualElement style="flex-grow: 1; justify-content: center; align-items: center;">
+        <ui:Label text="Congratulations!&#10;Slayer # has been obliterated!&#10;Return to the main menu to SLAY AGAIN!" name="endscreenText" style="align-items: stretch; -unity-text-align: upper-center; font-size: 25%; color: rgb(255, 255, 255);" />
+        <ui:Button text="Slay Again" name="playagain" class="button" />
+    </ui:VisualElement>
+</ui:UXML>

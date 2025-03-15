@@ -31,6 +31,10 @@ public class InputHandler : MonoBehaviour
     private InputAction backAction;
     private InputAction switchAction;
 
+    public bool TopRightDown { get => topRightAction.IsPressed(); }
+    public bool TopLeftDown { get => topLeftAction.IsPressed(); }
+    public bool BotRightDown { get => botRightAction.IsPressed(); }
+    public bool BotLeftDown { get => botLeftAction.IsPressed(); }
 
     public bool TopRightTriggered { get => topRightAction.WasPressedThisFrame(); }
     public bool TopLeftTriggered { get => topLeftAction.WasPressedThisFrame(); }

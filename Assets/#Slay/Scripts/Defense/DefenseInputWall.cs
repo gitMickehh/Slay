@@ -23,6 +23,14 @@ public class DefenseInputWall : MonoBehaviour
     float time;
     float npcPlayWellInterval;
 
+    [Header("Visual Feedback Boxes")]
+    public Material notPressedMaterial;
+    public Material pressedMaterial;
+    public MeshRenderer topRight;
+    public MeshRenderer topLeft;
+    public MeshRenderer botRight;
+    public MeshRenderer botLeft;
+
     private void Start()
     {
         currentHighlightedNotes = new List<DefenseNoteObject>();
@@ -37,7 +45,6 @@ public class DefenseInputWall : MonoBehaviour
         if (other.tag == "defense-note")
         {
             //other.GetComponentInParent<DefenseNoteObject>().ReturnToPool();
-
             var currentNote = other.GetComponentInParent<DefenseNoteObject>();
             currentNote.SetMaterial(highlightedMaterial);
             currentHighlightedNotes.Add(currentNote);
@@ -65,15 +72,58 @@ public class DefenseInputWall : MonoBehaviour
 
     private void CheckInputs()
     {
+        LightUpVisualFeedback("");
+        if(ServiceLocator<InputHandler>.Service.TopRightDown)
+        {
+            LightUpVisualFeedback("TopRight");
+        }
+        if (ServiceLocator<InputHandler>.Service.TopLeftDown)
+        {
+            LightUpVisualFeedback("TopLeft");
+        }
+        if (ServiceLocator<InputHandler>.Service.BotRightDown)
+        {
+            LightUpVisualFeedback("BotRight");
+        }
+        if (ServiceLocator<InputHandler>.Service.BotLeftDown)
+        {
+            LightUpVisualFeedback("BotLeft");
+        }
+
         for (int i = currentHighlightedNotes.Count - 1; i >= 0; i--)
         {
-            //if (Input.GetKey(currentHighlightedNotes[i].keyCode))
-            //if (InputHandler.Instance.ListenToDefenderAction(currentHighlightedNotes[i].actionName))
             if (ServiceLocator<InputHandler>.Service.ListenToDefenderAction(currentHighlightedNotes[i].actionName))
             {
                 currentHighlightedNotes[i].ReturnToPool();
                 currentHighlightedNotes.RemoveAt(i);
+
+                //LightUpVisualFeedback(currentHighlightedNotes[i].actionName);
             }
+        }
+    }
+
+    private void LightUpVisualFeedback(string actionName)
+    {
+        switch (actionName)
+        {
+            case "TopRight":
+                topRight.material = pressedMaterial;
+                break;
+            case "TopLeft":
+                topLeft.material = pressedMaterial;
+                break;
+            case "BotRight":
+                botRight.material = pressedMaterial;
+                break;
+            case "BotLeft":
+                botLeft.material = pressedMaterial;
+                break;
+            default:
+                topRight.material = notPressedMaterial;
+                topLeft.material = notPressedMaterial;
+                botRight.material = notPressedMaterial;
+                botLeft.material = notPressedMaterial;
+                break;
         }
     }
 
@@ -115,7 +165,6 @@ public class DefenseInputWall : MonoBehaviour
 
     private void HurtDefender()
     {
-
         if(!gameState.switchedRoles)
         {
             player2Health.SetValueWithAlert(player2Health.Value - healthRate);

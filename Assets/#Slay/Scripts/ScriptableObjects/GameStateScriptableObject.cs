@@ -16,6 +16,10 @@ public class GameStateScriptableObject : ScriptableObject
     [Range(0f,1.0f)]
     public float defenderPerfectionLevel = 1.0f;
 
+    [Header("Healthbars")]
+    public FloatReference player1Health;
+    public FloatReference player2Health;
+
     [Header("Song")]
     public SongReference currentSong;
     public bool switchedRoles;

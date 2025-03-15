@@ -414,19 +414,19 @@ MonoBehaviour:
   - transform: {fileID: 1516712552}
     material: {fileID: 2100000, guid: 82ae65d537c2db648a29e90294bed8c7, type: 2}
     actionName: BotRight
-    titleName: L (A)
+    titleName: X
   - transform: {fileID: 2035144096}
     material: {fileID: 2100000, guid: 9fe8a3d31f4c2cc4ebc610732d6848c2, type: 2}
     actionName: TopRight
-    titleName: P (B)
+    titleName: O
   - transform: {fileID: 2042514737}
     material: {fileID: 2100000, guid: 6cd0f3a37c78c0f439fc7f0856689c35, type: 2}
     actionName: TopLeft
-    titleName: O (Y)
+    titleName: Up
   - transform: {fileID: 1513065039}
     material: {fileID: 2100000, guid: 8094031e5e96d33459872001282d2d8f, type: 2}
     actionName: BotLeft
-    titleName: K (X)
+    titleName: Down
   defenderNotePool: {fileID: 272765667}
 --- !u!1 &8826824
 GameObject:
@@ -945,7 +945,7 @@ GameObject:
   - component: {fileID: 107903863}
   - component: {fileID: 107903862}
   m_Layer: 0
-  m_Name: Visual (1)
+  m_Name: TopRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2530,7 +2530,7 @@ GameObject:
   - component: {fileID: 453716185}
   - component: {fileID: 453716184}
   m_Layer: 0
-  m_Name: Visual (2)
+  m_Name: BotLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4267,7 +4267,7 @@ GameObject:
   - component: {fileID: 861974744}
   - component: {fileID: 861974743}
   m_Layer: 0
-  m_Name: Visual (3)
+  m_Name: BotRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5504,6 +5504,55 @@ Transform:
   - {fileID: 230538429}
   m_Father: {fileID: 1298783374}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1131772800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1131772801}
+  - component: {fileID: 1131772802}
+  m_Layer: 0
+  m_Name: EndScreenUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1131772801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131772800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1131772802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131772800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: d6f85cc87dc13204294e2ea6f159f466, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 4b0e1fae66dc065438d435a1c0612f1f,
+    type: 3}
+  m_SortingOrder: 10
 --- !u!1 &1134824046
 GameObject:
   m_ObjectHideFlags: 0
@@ -6707,6 +6756,7 @@ MonoBehaviour:
   singerCameraTransform: {fileID: 1393421674}
   player2Camera: {fileID: 1305892482}
   defenderCameraTransform: {fileID: 1366901400}
+  EndScreenUIDocument: {fileID: 1131772802}
 --- !u!114 &1302499706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7700,8 +7750,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1911528995}
   - {fileID: 107903861}
+  - {fileID: 1911528995}
   - {fileID: 453716183}
   - {fileID: 861974742}
   m_Father: {fileID: 5244029}
@@ -7776,6 +7826,12 @@ MonoBehaviour:
     type: 2}
   ShakePlayer2CameraEvent: {fileID: 11400000, guid: 803464c2359277e42935f89765e3c322,
     type: 2}
+  notPressedMaterial: {fileID: 2100000, guid: d08450db4dd98ce4db88c3664ad27dcd, type: 2}
+  pressedMaterial: {fileID: 2100000, guid: 0136c68b70a3d6f40935a2b8a404880e, type: 2}
+  topRight: {fileID: 107903862}
+  topLeft: {fileID: 1911528996}
+  botRight: {fileID: 861974743}
+  botLeft: {fileID: 453716184}
 --- !u!1 &1544105454
 GameObject:
   m_ObjectHideFlags: 0
@@ -9204,7 +9260,7 @@ GameObject:
   - component: {fileID: 1911528997}
   - component: {fileID: 1911528996}
   m_Layer: 0
-  m_Name: Visual
+  m_Name: topLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19688,6 +19744,7 @@ SceneRoots:
   - {fileID: 999633532}
   - {fileID: 15866232}
   - {fileID: 1302499704}
+  - {fileID: 1131772801}
   - {fileID: 5244029}
   - {fileID: 537592960}
   - {fileID: 6961905200235315422}
